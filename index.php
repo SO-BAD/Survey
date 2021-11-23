@@ -1,12 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Survey</title>
-</head>
-<body>
-    
+<?php include "./include/head.php";?>
+    <div class="content">
+        <aside class="menu">
+            <nav>
+                <a href="#"><i class="fas fa-plus"></i>&ensp;舉辦投票</a>
+                <a href="#"><i class="far fa-file-alt"></i>&ensp;查詢紀錄</a>
+            </nav>
+        </aside>
+        <section class= "main">
+
+        </section>
+        <aside class="user_list">
+
+        </aside>
+    </div>
 </body>
 </html>
