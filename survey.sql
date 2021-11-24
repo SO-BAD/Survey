@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2021-11-23 14:08:28
+-- 產生時間： 2021-11-24 14:08:44
 -- 伺服器版本： 10.4.21-MariaDB
 -- PHP 版本： 7.3.30
 
@@ -32,15 +32,16 @@ CREATE TABLE `accounts` (
   `account` varchar(22) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `password` varchar(22) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `mail` varchar(50) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `mobile` varchar(15) COLLATE utf8mb4_unicode_520_ci NOT NULL
+  `mobile` varchar(15) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `create_time` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- 傾印資料表的資料 `accounts`
 --
 
-INSERT INTO `accounts` (`id`, `account`, `password`, `mail`, `mobile`) VALUES
-(1, 'test', 'test', 'test@gmail.com', '0912345678');
+INSERT INTO `accounts` (`id`, `account`, `password`, `mail`, `mobile`, `create_time`) VALUES
+(1, 'test', 'test', 'test@gmail.com', '0912345678', '2021-11-24 21:07:35');
 
 --
 -- 已傾印資料表的索引
