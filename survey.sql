@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2021-11-24 14:08:44
+-- 產生時間： 2021-11-28 16:28:57
 -- 伺服器版本： 10.4.21-MariaDB
 -- PHP 版本： 7.3.30
 
@@ -43,6 +43,27 @@ CREATE TABLE `accounts` (
 INSERT INTO `accounts` (`id`, `account`, `password`, `mail`, `mobile`, `create_time`) VALUES
 (1, 'test', 'test', 'test@gmail.com', '0912345678', '2021-11-24 21:07:35');
 
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `acc_data`
+--
+
+CREATE TABLE `acc_data` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `name` varchar(30) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `gender` tinyint(1) NOT NULL,
+  `birthday` date NOT NULL,
+  `live` varchar(5) COLLATE utf8mb4_unicode_520_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- 傾印資料表的資料 `acc_data`
+--
+
+INSERT INTO `acc_data` (`id`, `name`, `gender`, `birthday`, `live`) VALUES
+(1, 'han', 1, '1989-09-23', 'S');
+
 --
 -- 已傾印資料表的索引
 --
@@ -54,6 +75,12 @@ ALTER TABLE `accounts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `acc_data`
+--
+ALTER TABLE `acc_data`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
 --
 
@@ -61,6 +88,12 @@ ALTER TABLE `accounts`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `accounts`
 --
 ALTER TABLE `accounts`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `acc_data`
+--
+ALTER TABLE `acc_data`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
