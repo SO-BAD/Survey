@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2021-11-28 16:28:57
+-- 產生時間： 2021-11-29 03:15:26
 -- 伺服器版本： 10.4.21-MariaDB
--- PHP 版本： 7.3.30
+-- PHP 版本： 7.4.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,6 +33,7 @@ CREATE TABLE `accounts` (
   `password` varchar(22) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `mail` varchar(50) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `mobile` varchar(15) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `name` varchar(30) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `create_time` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
@@ -40,8 +41,8 @@ CREATE TABLE `accounts` (
 -- 傾印資料表的資料 `accounts`
 --
 
-INSERT INTO `accounts` (`id`, `account`, `password`, `mail`, `mobile`, `create_time`) VALUES
-(1, 'test', 'test', 'test@gmail.com', '0912345678', '2021-11-24 21:07:35');
+INSERT INTO `accounts` (`id`, `account`, `password`, `mail`, `mobile`, `name`, `create_time`) VALUES
+(1, 'test', 'test', 'test@gmail.com', '0912345678', 'han', '2021-11-24 21:07:35');
 
 -- --------------------------------------------------------
 
@@ -51,7 +52,6 @@ INSERT INTO `accounts` (`id`, `account`, `password`, `mail`, `mobile`, `create_t
 
 CREATE TABLE `acc_data` (
   `id` int(11) UNSIGNED NOT NULL,
-  `name` varchar(30) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `gender` tinyint(1) NOT NULL,
   `birthday` date NOT NULL,
   `live` varchar(5) COLLATE utf8mb4_unicode_520_ci NOT NULL
@@ -61,8 +61,8 @@ CREATE TABLE `acc_data` (
 -- 傾印資料表的資料 `acc_data`
 --
 
-INSERT INTO `acc_data` (`id`, `name`, `gender`, `birthday`, `live`) VALUES
-(1, 'han', 1, '1989-09-23', 'S');
+INSERT INTO `acc_data` (`id`, `gender`, `birthday`, `live`) VALUES
+(1, 1, '1989-09-23', 'S');
 
 --
 -- 已傾印資料表的索引
