@@ -9,7 +9,6 @@
     <style>
         *{
             box-sizing: border-box;
-            border:1px solid pink;
         }
         body {
             margin: 0;
@@ -44,33 +43,33 @@
 
 <body>
     <div class ="insert_box">
-        <label class = "label"for="account">Account</label><input type="text" id="account" class="input">
+        <form action="./api/acc_insert.php" method ="POST">
+        <label class = "label"for="account">Account</label>
+        <input type="text" id="account" class="input"name ="account[]">
         <div class ="alert">
-            <button>檢查</button><span>error</span>
+            <!-- <button>檢查</button><span>error</span> -->
         </div>
-        <label class = "label"for="password">password</label><input type="password" id="password" class="input">
-        <label class = "label"for="password">password_ck</label><input type="password" id="password" class="input">
+        <label class = "label"for="password">password</label>
+        <input type="password" id="password" class="input" name ="account[]">
+        <!-- <label class = "label"for="password">password_ck</label>
+        <input type="password" id="password" class="input"> -->
         <div class ="alert">
-            <button>檢查</button><span>error</span>
+            <!-- <button>檢查</button><span>error</span> -->
         </div>
-        <label class = "label"for="">name</label><input type="text" id="" class="input">
+        <label class = "label"for="">name</label>
+        <input type="text" id="" class="input" name ="account[]">
         <div class ="alert">
-            <button>檢查</button><span>error</span>
+            <!-- <button>檢查</button><span>error</span> -->
         </div>
-        <label class = "label"for="">mail</label><input type="text" id="" class="input">
-        <div class ="alert">
-            <button>檢查</button><span>error</span>
-        </div>
-        <label class = "label"for="">mobile</label><input type="text" id="" class="input">
         <label class = "label"for="">gender:</label>
         <div class="gender">
-            <label for="">男</label><input type="radio" id="" name ="gender">
-            <label for="">女</label><input type="radio" id="" name ="gender">
+            <label for="">男</label><input type="radio" id="" name ="account[]" value="1">
+            <label for="">女</label><input type="radio" id="" name ="account[]" value="0">
         </div>
-        <label  class = "label" for="">birthday</label><input type="date" id="" class="input">
+        <label  class = "label" for="">birthday</label><input type="date" name ="account[]" class="input">
         <label  class = "label" for="">live</label>
         <div class="input">
-            <select name="live" id="">
+            <select  name ="account[]" id="">
                 <option value="A">臺北市</option>
                 <option value="B">臺中市</option>
                 <option value="C">基隆市</option>
@@ -100,6 +99,8 @@
             </select>
         </div>
         <input type="submit" id="submit" >
+        </form>
+        <a href='index.php'><button>首頁</button></a>
     </div>
 </body>
 

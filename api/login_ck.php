@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include "db.php";
     $dsn = "mysql:host=localhost; charset=utf8;dbname=survey";
     $pdo = new PDO($dsn,'root','');
     $account = $_POST['account'];

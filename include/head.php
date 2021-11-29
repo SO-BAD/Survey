@@ -22,6 +22,7 @@
                         include "loggedin.php";
                     }else{
                         echo "<a href='login.php'><button>登入</button></a>";
+                        echo "<a href='insert.php'><button>註冊</button></a>";
                     }
                 ?>
             </div>
