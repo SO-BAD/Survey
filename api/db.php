@@ -46,7 +46,7 @@
         $pdo->exec($sql);
     }
 
-
+    
     // live 
     $live = array(
         'A'=> '臺北市', 
