@@ -1,6 +1,8 @@
 <?php
     $dsn = "mysql:host=localhost;charset=utf8;dbname=survey";
     $pdo = new PDO($dsn,'root','');
+    // $dsn = "mysql:host=localhost;charset=utf8;dbname=survey";
+    // $pdo = new PDO($dsn,'s1100404','s1100404');
 
     //select
 
@@ -16,8 +18,10 @@
         }
         
         $sql = "SELECT $cols FROM `$table` WHERE `$id_class`='$id_value'";
+        
         return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
+    
     
 
     // insert
@@ -41,8 +45,8 @@
             $str_data="'".$value."'";
         }
 
-        $sql = "INSERT INTO `$table`(".$str_col.") VALUES (".$str_data.");";
-        echo $sql;
+        $sql = "INSERT INTO `$table`(".$str_col.") VALUES (".$str_data.")";
+        
         $pdo->exec($sql);
     }
 
