@@ -1,7 +1,7 @@
 <?php
     $dsn = "mysql:host=localhost;charset=utf8;dbname=survey";
     $pdo = new PDO($dsn,'root','');
-    // $dsn = "mysql:host=localhost;charset=utf8;dbname=survey";
+    // $dsn = "mysql:host=localhost;charset=utf8;dbname=s1100404";
     // $pdo = new PDO($dsn,'s1100404','s1100404');
 
     //select
