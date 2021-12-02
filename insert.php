@@ -120,8 +120,8 @@
             </div>
             <label class="label" for="">gender:</label>
             <div class="gender">
-                <label for="">男</label><input type="radio" id="" name="account[]" value="1" checked>
-                <label for="">女</label><input type="radio" id="" name="account[]" value="0">
+                <input type="radio" id="" name="account[]" value="1" checked><label for="">男</label>
+                <input type="radio" id="" name="account[]" value="0"><label for="">女</label>
             </div>
             <label class="label" for="">birthday</label><input type="date" id = "birthday"name="account[]" class="input"onchange="non_empty(this)">
             <div class="alert">

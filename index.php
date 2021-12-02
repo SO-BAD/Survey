@@ -1,4 +1,6 @@
-<?php session_start(); header("Cache-Control:private");include "./api/db.php"?>
+<?php session_start();
+header("Cache-Control:private");
+include "./api/db.php" ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,12 +12,12 @@
     <link rel="stylesheet" href="./css/homePage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    
+
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="#">Survey</a>
+        <a class="navbar-brand" href="./index.php">Survey</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,41 +25,34 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#"><i class="fas fa-plus"></i>&ensp;投票 <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="./index.php?do=add_survey"><i class="fas fa-plus"></i>&ensp;投票 <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="far fa-file-alt"></i>&ensp;Story</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
-                </li> -->
             </ul>
             <div class="form-inline my-2 my-lg-0">
-                <?php include "./include/status.php";?>
+                <?php include "./include/status.php"; ?>
             </div>
         </div>
     </nav>
-
-
-
-
-
     <div class="page">
-        <?php include "./include/add_survey.php"?>
+        <?php
+        if (isset($_GET['do'])) {
+            if (isset($_SESSION['account'])) {
+                $str = "./include/" . $_GET['do'] . ".php";
+                include $str;
+            } else {
+               header("location:./login.php");
+               exit;
+            }
+        } else {
+            include "./include/show_survey.php";
+        }
+        ?>
     </div>
     <footer>
-        
+
     </footer>
 
 

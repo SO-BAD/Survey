@@ -13,7 +13,7 @@
                     <i class="far fa-circle"></i><input type="text" class="opt" name="q[0][]"placeholder="Option" onkeyup="ck(this)"><i class='fas fa-exclamation-triangle empty'></i>
                 </div>
             </div>
-            <i class="fas fa-plus" onclick="add_o(0)" style="cursor: pointer; margin-left:40px; ">&ensp;Option</i>
+            <i class="fas fa-plus" onclick="add_o(0)" style="cursor: pointer; margin-left:40px; ">&ensp;Add</i>
         </div>
     </div>
     <div class="footer">

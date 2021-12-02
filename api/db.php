@@ -4,7 +4,7 @@
     // $dsn = "mysql:host=localhost;charset=utf8;dbname=s1100404";
     // $pdo = new PDO($dsn,'s1100404','s1100404');
 
-    //select
+   
 
     function select($table, $col,$id_class,$id_value){
         global $pdo;
