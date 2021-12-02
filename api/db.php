@@ -42,7 +42,7 @@
             }
             $str_data = implode(",",$tmp_v);
         }else{
-            $str_data="'".$value."'";
+            $str_data="'".$acc_data."'";
         }
 
         $sql = "INSERT INTO `$table`(".$str_col.") VALUES (".$str_data.")";

@@ -1,0 +1,19 @@
+.table_box{
+    padding-top: 50px;
+}
+table{
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
+th{
+    width: 50%;
+    background-color: rgb(183, 184, 255);
+}
+tr{
+    width: 50%;
+}
+
+tr:hover{
+    background-color: #d3e0ec;
+}

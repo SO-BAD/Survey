@@ -1,5 +1,8 @@
-<pre>
+<form action="./api/insert_surveylog.php" method="post">
+
+    <input type="hidden" name ="id" value="<?=$_GET['id'];?>">
 <?php
+    
 if (isset($_GET['id']) && $_GET['id'] != "") {
 
     $sql = "SELECT * FROM `opts` WHERE `s_id` = {$_GET['id']}";
@@ -12,8 +15,8 @@ if (isset($_GET['id']) && $_GET['id'] != "") {
                 echo "Q:" . $res[$i]['opt'] . "<br>";
             } else {
 ?>
-                <input type="radio" id="" name="r[<?= $ct ?>][]" value="1" <?php echo ($res[$i]['opt_num'] == "1")?" Checked":"";  ?>>
-                <label for=''><?= $res[$i]['opt'] ?></label><br>
+                <input type="radio" id="<?php echo "q".$ct.$res[$i]['opt_num'];?>" name="r[<?= $ct ?>][]" value="<?=$res[$i]['opt_num'];?>" <?php echo ($res[$i]['opt_num'] == "1")?" Checked":"";  ?>>
+                <label for='<?php echo "q".$ct.$res[$i]['opt_num'];?>'><?= $res[$i]['opt'] ?></label><br>
 <?php
             }
         } else {
@@ -21,16 +24,10 @@ if (isset($_GET['id']) && $_GET['id'] != "") {
             echo "Q:" . $res[$i]['opt'] . "<br>";
         }
     }
-    // foreach ($res as $data) {
-
-    //     if($data['num'] == 0&&$data['opt_num']==0){
-    //         echo "問題:".$data['opt']."<br>";
-    //     }else{}
-    // }
 } else {
     include "./include/show_survey.php";
 }
-
-// print_r($res);
 ?>
-</pre>
+<input type="submit" value= "完成">
+</form>
+<link rel="stylesheet" href="./css/write_survey.css">

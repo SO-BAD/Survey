@@ -1,3 +1,8 @@
+
+<div class="form_box">
+    <div class = "form_header">
+        ADD  SURVEY
+    </div>
 <form action="./api/survey_insert.php" method="POST" class="form" id= "myform">
     <div class="top">
         <input type="text" placeholder="請輸入主題" onkeyup="ck(this)" name ="s[]"><i class='fas fa-exclamation-triangle empty'></i>
@@ -22,5 +27,6 @@
         
     </div>
 </form>
+</div>
 <link rel="stylesheet" href="./css/add_survey.css">
 <script src="./js/add_survey.js"></script>

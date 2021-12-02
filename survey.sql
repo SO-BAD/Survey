@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2021-12-02 08:29:28
+-- 產生時間： 2021-12-02 16:10:30
 -- 伺服器版本： 10.4.21-MariaDB
--- PHP 版本： 7.4.24
+-- PHP 版本： 7.3.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -64,27 +64,52 @@ CREATE TABLE `opts` (
   `num` int(11) NOT NULL,
   `opt_num` int(11) NOT NULL,
   `opt` varchar(30) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 0
+  `status` tinyint(1) NOT NULL DEFAULT 0,
+  `count` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- 傾印資料表的資料 `opts`
 --
 
-INSERT INTO `opts` (`id`, `s_id`, `num`, `opt_num`, `opt`, `status`) VALUES
-(1, 1, 0, 0, 'LIKE', 0),
-(2, 1, 0, 1, 'CAT', 0),
-(3, 1, 0, 2, 'DOG', 0),
-(4, 2, 0, 0, '吃甚麼', 0),
-(5, 2, 0, 1, '炒飯', 0),
-(6, 2, 0, 2, '炒麵', 0),
-(7, 3, 0, 0, '問題1', 0),
-(8, 3, 0, 1, '1', 0),
-(9, 3, 0, 2, '2', 0),
-(10, 3, 0, 3, '5', 0),
-(11, 3, 1, 0, '問題2', 0),
-(12, 3, 1, 1, '5', 0),
-(13, 3, 1, 2, '4', 0);
+INSERT INTO `opts` (`id`, `s_id`, `num`, `opt_num`, `opt`, `status`, `count`) VALUES
+(1, 1, 0, 0, 'LIKE', 0, 0),
+(2, 1, 0, 1, 'CAT', 0, 0),
+(3, 1, 0, 2, 'DOG', 0, 0),
+(4, 2, 0, 0, '吃甚麼', 0, 0),
+(5, 2, 0, 1, '炒飯', 0, 0),
+(6, 2, 0, 2, '炒麵', 0, 0),
+(7, 3, 0, 0, '問題1', 0, 0),
+(8, 3, 0, 1, '1', 0, 0),
+(9, 3, 0, 2, '2', 0, 1),
+(10, 3, 0, 3, '5', 0, 1),
+(11, 3, 1, 0, '問題2', 0, 0),
+(12, 3, 1, 1, '5', 0, 1),
+(13, 3, 1, 2, '4', 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `surveylog`
+--
+
+CREATE TABLE `surveylog` (
+  `id` int(11) NOT NULL,
+  `s_id` int(11) NOT NULL,
+  `q_num` int(11) NOT NULL,
+  `answer` int(11) NOT NULL,
+  `u_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- 傾印資料表的資料 `surveylog`
+--
+
+INSERT INTO `surveylog` (`id`, `s_id`, `q_num`, `answer`, `u_id`) VALUES
+(5, 3, 0, 3, 1),
+(6, 3, 1, 2, 1),
+(7, 3, 0, 2, 2),
+(8, 3, 1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -100,7 +125,7 @@ CREATE TABLE `surveys` (
   `edit_time` datetime NOT NULL,
   `end_time` date NOT NULL,
   `status` tinyint(1) DEFAULT 0,
-  `count` int(11) NOT NULL DEFAULT 0
+  `count` int(10) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
@@ -110,7 +135,7 @@ CREATE TABLE `surveys` (
 INSERT INTO `surveys` (`id`, `title`, `author`, `create_time`, `edit_time`, `end_time`, `status`, `count`) VALUES
 (1, '寵物', 'han', '2021-12-02 13:54:08', '0000-00-00 00:00:00', '2021-12-09', 0, 0),
 (2, '晚餐', 'han', '2021-12-02 14:12:05', '0000-00-00 00:00:00', '2021-12-09', 0, 0),
-(3, '很多問題', 'han', '2021-12-02 15:25:40', '0000-00-00 00:00:00', '2021-12-22', 0, 0);
+(3, '很多問題', 'han', '2021-12-02 15:25:40', '0000-00-00 00:00:00', '2021-12-22', 0, 2);
 
 --
 -- 已傾印資料表的索引
@@ -126,6 +151,12 @@ ALTER TABLE `accounts`
 -- 資料表索引 `opts`
 --
 ALTER TABLE `opts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `surveylog`
+--
+ALTER TABLE `surveylog`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -148,7 +179,13 @@ ALTER TABLE `accounts`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `opts`
 --
 ALTER TABLE `opts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `surveylog`
+--
+ALTER TABLE `surveylog`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `surveys`
