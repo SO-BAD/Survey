@@ -1,4 +1,4 @@
-<?php session_start(); include "./api/db.php"?>
+<?php session_start(); header("Cache-Control:private");include "./api/db.php"?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +54,6 @@
 
 
     <div class="page">
-
         <?php include "./include/add_survey.php"?>
     </div>
     <footer>
