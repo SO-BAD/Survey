@@ -2,7 +2,9 @@
 
     <input type="hidden" name ="id" value="<?=$_GET['id'];?>">
 <?php
-    
+
+
+
 if (isset($_GET['id']) && $_GET['id'] != "") {
 
     $sql = "SELECT * FROM `opts` WHERE `s_id` = {$_GET['id']}";

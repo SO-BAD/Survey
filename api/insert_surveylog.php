@@ -1,6 +1,12 @@
 <?php
     session_start();
-    include "db.php";
+    header("Cache-Control:private");
+    include_once "db.php";
+    $sql ="SELECT `id` FROM `surveylog` WHERE `u_id` ='{$_SESSION['account']['id']}'AND `s_id`= '{$_POST['id']}'";
+    $ck_res = $pdo->query($sql)->fetchColumn(); 
+    if($ck_res>0){
+        echo "<script>alert('已填寫過，無法再填寫');window.location.href='../index.php';</script>";
+    }else{
     echo $_POST['id']."<br>";
     print_r($_POST['r']);
     $log_col= ['s_id','q_num','answer','u_id'];
@@ -20,6 +26,6 @@
     $sql = "UPDATE `surveys` SET `count`='{$count}'WHERE  `id` = '{$_POST['id']}'";
     $pdo->exec($sql);
     
-    
     header("location:../index.php");
+    }
 ?>

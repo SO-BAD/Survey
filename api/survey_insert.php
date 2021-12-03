@@ -2,6 +2,7 @@
 <?php
 session_start();
 include "db.php";
+header("Cache-Control:private");
 $acc_col = ['title','end_time','author'];
 $acc_data =[$_POST['s'][0],$_POST['s'][1],$_SESSION['account']['name']];
 
