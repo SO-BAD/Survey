@@ -10,11 +10,11 @@ $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     </div>
 <table>
     <tr>
-        <td>截止日期</td>
-        <td>主題</td>
-        <td>狀態</td>
-        <td>已填寫</td>
-        <td>結果</td>
+        <th>截止日期</th>
+        <th>主題</th>
+        <th>狀態</th>
+        <th>已填寫</th>
+        <th>結果</th>
     </tr>
     <?php foreach ($res as $data) { ?>
         <tr>
@@ -39,7 +39,7 @@ $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
             <td><?=$data['count']?></td>
             <td><?php echo "<a href='./index.php?do=res_survey&id=".$data['id']."'>查看</a>";?></td>
         </tr>
-    <?php } ?>
+    <?php } ?>    
 </table>
 </div>
 <link rel="stylesheet" href="./css/show_survey.css">

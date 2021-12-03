@@ -4,12 +4,19 @@
     padding: 0;
     font-family: 'Microsoft JhengHei';
 }
-
-
+a:hover{
+    text-decoration: none;
+}
+nav{
+    height: 80px;
+    background-color: rgb(224, 229, 233);
+    position: fixed;
+    top:0px;
+}
 .page{
     width: 900px;
     min-height:800px;
-    margin: 56px auto 0px auto;
+    margin: 80px auto 0px auto;
 }
 
 footer{
@@ -18,4 +25,35 @@ footer{
     text-align: center;
     color:white;
     background-color: black;
+}
+.display_box{
+    background-color: rgba(0,0 ,0,0.3);
+    position: fixed;
+    display: none;
+    top:0px;
+    z-index: 99;
+}
+.display_res{
+    width: 300px;
+    min-height: 500px;
+    position: fixed;
+    display: none;
+    top:0px;
+    z-index: 100;
+    background-color: white;
+    padding: 30px 50px;
+    border-radius: 20px;
+}
+.res_header{
+    width: 200px;
+    height: 60px;
+    padding-top:10px;
+    text-align: center;
+    font-size: 30px;
+}
+.res_content{
+    width: 200px;
+    padding-top:5px;
+    border-top: 5px solid rgb(82, 82, 82);
+    text-align: center;
 }

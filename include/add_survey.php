@@ -21,10 +21,14 @@
             <i class="fas fa-plus" onclick="add_o(0)" style="cursor: pointer; margin-left:40px; ">&ensp;Add</i>
         </div>
     </div>
-    <div class="footer">
-        <input type="button" value="add question" onclick="add_q()">
-        <input type="button" id = "submit"value="建立" onclick="empty_ck()">
-        
+    <div class="footer container-fluid">
+        <div class="row">
+            <input type="button" value="add question" class='btn btn-info' onclick="add_q()">
+
+        </div>
+        <div class="row d-flex justify-content-center mt-5">
+            <input type="button" id = "submit"value="建立" class='btn btn-primary' onclick="empty_ck()">
+        </div>
     </div>
 </form>
 </div>

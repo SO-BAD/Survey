@@ -1,3 +1,6 @@
+a:hover{
+    text-decoration: none;
+}
 .table_box{
     padding-top: 20px;
 }
@@ -12,6 +15,13 @@ table{
     text-align:center;
     font-weight: bolder;
 }
+tr:nth-child(1) th{
+    padding: 5px;
+    border-bottom: 2px solid rgb(48, 48, 54);
+}
+td{
+    padding: 5px;
+}
 td:nth-child(2){
     width: 35%;
 }
@@ -20,4 +30,7 @@ td:nth-child(1){
 }
 td:nth-child(3),td:nth-child(4),td:nth-child(5){
     width: 15%;
+}
+tr:NOT(:nth-child(1)):hover{
+    background-color: #e8f4ff;
 }
