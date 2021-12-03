@@ -13,7 +13,7 @@ include "./api/db.php" ?>
     <title>Survey</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/homePage.css">
+    <link rel="stylesheet" href="./css/home.css">
     <script>
         function display_size() {
             let w = window.innerWidth;
@@ -46,11 +46,11 @@ include "./api/db.php" ?>
     </div>
     <nav class="container-fluid">
         <div class="row">
-            <div class="col-1">
+            <div class="col-1 bg-info">
                 <a href="./index.php">Survey</a>
             </div>
             <div class="col-9">
-                <a href="./index.php?do=add_survey"><i class="fas fa-plus"></i>ADD SURVEY</a>
+                
             </div>
             <div class="col-2 pt-4">
                 <?php include "./include/status.php"; ?>

@@ -6,7 +6,7 @@ $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <div class="table_box">
     <div class= "table_header">
-    Survey
+    <h1>Survey</h1><a href="./index.php?do=add_survey"><i class="fas fa-plus"></i>&nbsp;ADD</a>
     </div>
 <table>
     <tr>
