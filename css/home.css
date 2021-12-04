@@ -8,14 +8,16 @@ a:hover{
     text-decoration: none;
 }
 nav{
+    height: 60px;
     background-color: rgb(224, 229, 233);
-    position: fixed;
-    top:0px;
+}
+.survey{
+    height: 60px;
 }
 .page{
     width: 900px;
     min-height:800px;
-    margin: 80px auto 0px auto;
+    margin: 10px auto 0px auto;
 }
 
 footer{

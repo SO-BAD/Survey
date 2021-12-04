@@ -2,6 +2,10 @@
     session_start();
     header("Cache-Control:private");
     include_once "db.php";
+    include_once "islate.php";
+      
+        
+    
     $sql ="SELECT `id` FROM `surveylog` WHERE `u_id` ='{$_SESSION['account']['id']}'AND `s_id`= '{$_POST['id']}'";
     $ck_res = $pdo->query($sql)->fetchColumn(); 
     if($ck_res>0){

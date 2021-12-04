@@ -46,13 +46,13 @@ include "./api/db.php" ?>
     </div>
     <nav class="container-fluid">
         <div class="row">
-            <div class="col-1 bg-info">
+            <div class="survey">
                 <a href="./index.php">Survey</a>
             </div>
-            <div class="col-9">
+            <div class=" ">
                 
             </div>
-            <div class="col-2 pt-4">
+            <div class="">
                 <?php include "./include/status.php"; ?>
             </div>
         </div>
@@ -65,8 +65,7 @@ include "./api/db.php" ?>
                 $str = "./include/" . $_GET['do'] . ".php";
                 include $str;
             } else {
-                header("location:./login.php");
-                exit;
+                include "./include/login.php";
             }
         } else {
             include "./include/show_survey.php";

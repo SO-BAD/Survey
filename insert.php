@@ -113,21 +113,21 @@
             <div class="alert">
             <span id="password_alert"></span>
             </div>
-            <label class="label" for="">name</label>
+            <label class="label" for="name">name</label>
             <input type="text" id="name" class="input" name="account[]"onkeyup="re_ck(this);">
             <div class="alert">
             <span id="name_alert"></span>
             </div>
-            <label class="label" for="">gender:</label>
             <div class="gender">
-                <input type="radio" id="" name="account[]" value="1" checked><label for="">男</label>
-                <input type="radio" id="" name="account[]" value="0"><label for="">女</label>
+                gender:
+                <input type="radio" id="man" name="account[]" value="1" checked><label for="man">男</label>
+                <input type="radio" id="woman" name="account[]" value="0"><label for="woman">女</label>
             </div>
-            <label class="label" for="">birthday</label><input type="date" id = "birthday"name="account[]" class="input"onchange="non_empty(this)">
+            <label class="label" for="birthday">birthday</label><input type="date" id = "birthday"name="account[]" class="input"onchange="non_empty(this)">
             <div class="alert">
             <span id="birthday_alert"></span>
             </div>
-            <label class="label" for="">live</label>
+            <label class="label" for="live">live</label>
             <div class="input">
                 <select name="account[]" id="live">
                     <option value="A">臺北市</option>
