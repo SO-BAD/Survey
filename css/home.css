@@ -13,7 +13,7 @@ nav{
     background-color: rgb(224, 229, 233);
 }
 .header{
-    width: 700px;
+    width: 800px;
     margin: auto;
 }
 .survey_box,.story_box{
@@ -34,7 +34,7 @@ nav{
     float: right;
 }
 .page{
-    width: 900px;
+    width: 700px;
     min-height:800px;
     margin: 10px auto 0px auto;
 }

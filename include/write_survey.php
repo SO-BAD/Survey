@@ -14,12 +14,16 @@
         echo "<script>alert('已填寫過，無法再填寫');window.location.href='./index.php';</script>";
     }
 
-    $sql = "SELECT * FROM `opts` WHERE `s_id` = {$_GET['id']}";
+    // $sql = "SELECT * FROM `opts` WHERE `s_id` = {$_GET['id']}";
+    // $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    $sql = "SELECT `opts`.`opt`,`opts`.`num`,`opts`.`opt_num`,`opts`.`count`,`surveys`.`title` FROM `opts` inner JOIN `surveys` WHERE `surveys`.`id` =`opts`.`s_id` AND `s_id` = {$_GET['id']}";
     $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-
+    echo "<h1>{$res[0]['title']}</h1>";
 
     $total = count($res);
     $ct = 0;
+
+
     for ($i = 0; $i < $total; $i++) {
         if ($res[$i]['num'] == $ct) {
             if ($res[$i]['opt_num'] == "0") {
@@ -32,7 +36,7 @@
             }
         } else {
             $ct++;
-            echo "Q:" . $res[$i]['opt'] . "<br>";
+            echo "<h3>" . $res[$i]['opt'] . "</h3>";
         }
     }
     ?>
