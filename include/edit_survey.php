@@ -19,8 +19,11 @@
                     $answer[] = $res[$i]['num']."-".$res[$i]['answer'];
                 }else{
         ?>
-                    <input type="radio" id="<?php echo "q" . $ct . $res[$i]['opt_num']; ?>" name="r[<?= $ct ?>][]" value="<?= $res[$i]['opt_num']; ?>" <?php echo ($res[$i]['opt_num'] == $res[$i]['answer']) ? " Checked" : "";  ?>>
-                    <label for='<?php echo "q" . $ct . $res[$i]['opt_num']; ?>'><?= $res[$i]['opt'] ?></label><br>
+                    <input type="radio" id="<?php echo "q" . $ct ."-". $res[$i]['opt_num']; ?>" name="r[<?= $ct ?>][]" value="<?= $res[$i]['opt_num']; ?>" <?php echo ($res[$i]['opt_num'] == $res[$i]['answer']) ? " Checked" : "";  ?>>
+                    <?php echo "<label for='"."q" . $ct . "-".$res[$i]['opt_num']."'"; echo ($res[$i]['opt_num'] == $res[$i]['answer'])?"class='original'>":">"; 
+                    ?>
+                    
+                    <?= $res[$i]['opt'] ?></label><br>
         <?php
                 }
             }else{
@@ -30,37 +33,54 @@
             }
         }
         $answer_str = implode(",",$answer);
+        $str = $_GET['id']."/".$_SESSION['account']['id']."/".$answer_str;
+        echo $str;
     }
 ?>
+<style>
+    .original{
+        color:red;
+    }
+</style>
+<button class="btn btn-info" onclick="edit_ck('<?= $str;?>')">修改</button>
+<a href="./index.php" class="btn btn-info">首頁</a>
 <script>
     var ct = 0;
     function re_ck(data){
         answer = data.split("-");
-        if(document.getElementById(("q"+answer[0]+answer[1])).checked == true){
+        if(document.getElementById(("q"+answer[0]+"-"+answer[1])).checked == true){
             ct++;
         }
     }
     function edit_ck(str){
+        let arr_checked = Array();
+        let input = document.getElementsByTagName("input");
+        for (let i = 0;i<input.length;i++){
+            if(input[i].checked){
+                let str1 = input[i].id.split("-");
+                let num = str1[0].substr(1,(str1[0].length-1));
+                arr_checked.push(num +"-"+str1[1]);
+            }
+        }
         ct = 0 ;
-        let arr = str.split(",");
+        let noid_str = str.split("/");
+        let arr = noid_str[2].split(",");
         arr.forEach(data => re_ck(data));
         if(ct == arr.length){
             alert("未修改選項");
         }else{
-            edit_log(str);
+            edit_log((str +"/" +arr_checked.join()));
         }
     }
 
     function edit_log(str) {
             $.post("./api/edit_surveylog.php", {
-                    str: str,
-                    id:id
+                    str: str
                 },
                 function(res) {
                     alert(res);
+                    window.location.href='./index.php';
                 }
             );
         }
 </script>
-<button class="btn btn-info" onclick="edit_ck('<?= $answer_str;?>')">修改</button>
-<a href="./index.php" class="btn btn-info">首頁</a>
