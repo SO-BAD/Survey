@@ -44,15 +44,15 @@ include "./api/db.php" ?>
 
         </div>
     </div>
-    <nav class="container-fluid">
-        <div class="row">
-            <div class="survey">
+    <nav class="">
+        <div class="header">
+            <div class="survey_box ">
                 <a href="./index.php">Survey</a>
             </div>
-            <div class=" ">
-                
+            <div class="story_box">
+            <a href="./index.php">Story</a>
             </div>
-            <div class="">
+            <div class="status_box">
                 <?php include "./include/status.php"; ?>
             </div>
         </div>
