@@ -33,7 +33,7 @@ include "./api/db.php" ?>
     </script>
 </head>
 
-<body onload="display_size();" onresize="display_size();">
+<body onload="display_size();" onresize="display_size();" >
     <div class="display_box" onclick="nodisplay()">
     </div>
     <div class="display_res">
