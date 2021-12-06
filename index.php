@@ -33,7 +33,7 @@ include "./api/db.php" ?>
     </script>
 </head>
 
-<body onload="display_size();" onresize="display_size();" >
+<body onload="display_size();" onresize="display_size();">
     <div class="display_box" onclick="nodisplay()">
     </div>
     <div class="display_res">
@@ -50,28 +50,45 @@ include "./api/db.php" ?>
                 <a href="./index.php">Survey</a>
             </div>
             <div class="story_box">
-            <a href="./index.php">Story</a>
+                <a href="./index.php">Story</a>
             </div>
             <div class="status_box">
                 <?php include "./include/status.php"; ?>
             </div>
         </div>
     </nav>
-
-    <div class="page">
-        <?php
-        if (isset($_GET['do'])) {
-            if (isset($_SESSION['account'])) {
-                $str = "./include/" . $_GET['do'] . ".php";
-                include $str;
+    <section class = "page">
+        <div class="content">
+            <?php
+            if (isset($_GET['do'])) {
+                if (isset($_SESSION['account'])) {
+                    $str = "./include/" . $_GET['do'] . ".php";
+                    include $str;
+                } else {
+                    header("location:./login.php");
+                }
             } else {
-                header("location:./login.php");
+                include "./include/show_survey.php";
             }
-        } else {
-            include "./include/show_survey.php";
-        }
-        ?>
-    </div>
+            ?>
+        </div>
+        <div class = "ad">
+            <img src ="ad/ad1.jpg" alt=''>
+            <img src ="ad/ad2.jpg" alt=''>
+            <img src ="ad/ad31.jpg" alt=''>
+            <img src ="ad/ad41.jpg" alt=''>
+            <?php
+                // $sql ="SELECT * FROM `ad` WHERE `status` = '0'";
+                // $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+                // foreach($res as $key =>$data){
+                //     echo "<div style=' width:200px;'>";
+                //     echo "<img style=' width:180px;' src ='{$data['src']}' alt='{$data['intro']}'>";
+                //     echo "</div>";
+                // }
+                
+            ?>
+        </div>
+    </section>
     <footer>
 
     </footer>

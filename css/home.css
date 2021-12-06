@@ -34,9 +34,23 @@ nav{
     float: right;
 }
 .page{
-    width: 700px;
+    width: 1000px;
     min-height:800px;
     margin: 10px auto 0px auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.content{
+    width: 700px;
+    min-height:800px;
+}
+.ad{
+    width: 200px;
+    min-height:800px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
 }
 
 footer{

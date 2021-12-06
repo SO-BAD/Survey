@@ -34,7 +34,6 @@
         }
         $answer_str = implode(",",$answer);
         $str = $_GET['id']."/".$_SESSION['account']['id']."/".$answer_str;
-        echo $str;
     }
 ?>
 <style>
