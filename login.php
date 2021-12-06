@@ -1,4 +1,10 @@
-<?php session_start() ?>
+<?php
+    session_start();
+    if(isset($_SESSION['account'])){
+        echo "<script>alert('已登入');window.location.href='index.php';</script>";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -128,7 +134,7 @@
             <a href="./index.php" class="btn btn-info mt-3 ml-3 py-1">取消</a>
         </div>
         <div class ="reg_box">
-            點此<a href="./insert.php">註冊</a> <a href="#">忘記密碼</a> 
+            點此<a href="./insert.php">註冊</a>
         </div>
     </section>
 </body>

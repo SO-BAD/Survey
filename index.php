@@ -65,7 +65,7 @@ include "./api/db.php" ?>
                 $str = "./include/" . $_GET['do'] . ".php";
                 include $str;
             } else {
-                include "./include/login.php";
+                header("location:./login.php");
             }
         } else {
             include "./include/show_survey.php";
