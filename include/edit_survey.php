@@ -1,3 +1,4 @@
+<div class= "write_page">
 <?php
     include_once "./api/isempty.php";
     include_once "./api/islate.php";
@@ -11,7 +12,7 @@
                 WHERE `surveylog`.`s_id`=`surveys`.`id` AND `opts`.`s_id`=`surveylog`.`s_id`  AND `opts`.`num`=`surveylog`.`q_num` AND `surveylog`.`u_id` ='{$_SESSION['account']['id']}'AND `surveylog`.`s_id`= '{$_GET['id']}'";
         $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC); 
         $ct = 0;
-        echo "<h3>{$res[0]['title']}</h3>";
+        echo "<h1>{$res[0]['title']}</h1>";
         for($i =0;$i<count($res);$i++){
             if($res[$i]['num'] == $ct){
                 if($res[$i]['opt_num'] == "0" ){
@@ -19,11 +20,11 @@
                     $answer[] = $res[$i]['num']."-".$res[$i]['answer'];
                 }else{
         ?>
-                    <input type="radio" id="<?php echo "q" . $ct ."-". $res[$i]['opt_num']; ?>" name="r[<?= $ct ?>][]" value="<?= $res[$i]['opt_num']; ?>" <?php echo ($res[$i]['opt_num'] == $res[$i]['answer']) ? " Checked" : "";  ?>>
-                    <?php echo "<label for='"."q" . $ct . "-".$res[$i]['opt_num']."'"; echo ($res[$i]['opt_num'] == $res[$i]['answer'])?"class='original'>":">"; 
+                    <div class= 'input_box<?php echo ($res[$i]['opt_num'] == $res[$i]['answer'])? " original":"";?>'><input type="radio" id="<?php echo "q" . $ct ."-". $res[$i]['opt_num']; ?>" name="r[<?= $ct ?>][]" value="<?= $res[$i]['opt_num']; ?>" <?php echo ($res[$i]['opt_num'] == $res[$i]['answer']) ? " Checked" : "";  ?>>
+                    <?php echo "<label for='"."q" . $ct . "-".$res[$i]['opt_num']."'>";  
                     ?>
                     
-                    <?= $res[$i]['opt'] ?></label><br>
+                    <?= $res[$i]['opt'] ?></label></div>
         <?php
                 }
             }else{
@@ -36,13 +37,13 @@
         $str = $_GET['id']."/".$_SESSION['account']['id']."/".$answer_str;
     }
 ?>
-<style>
-    .original{
-        color:red;
-    }
-</style>
-<button class="btn btn-info" onclick="edit_ck('<?= $str;?>')">修改</button>
-<a href="./index.php" class="btn btn-info">首頁</a>
+<div class="edit_submit"><button class="btn btn-info" onclick="edit_ck('<?= $str;?>')">修改</button>
+<a href="./index.php" class="btn btn-info">首頁</a></div>
+</div>
+
+<link rel="stylesheet" href="./css/write_survey.css">
+
+
 <script>
     var ct = 0;
     function re_ck(data){

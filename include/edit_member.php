@@ -68,7 +68,6 @@ if (isset($_SESSION['account'])) {
         height: 500px;
         margin: 20px auto;
         padding: 20px 30px;
-        border: 1px solid black;
     }
 
     #pwForm * {

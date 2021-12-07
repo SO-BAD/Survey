@@ -43,11 +43,10 @@ nav{
 
 .content{
     width: 700px;
-    min-height:800px;
 }
-.ad{
+.aside{
     width: 200px;
-    min-height:800px;
+    min-height:700px;
     padding: 10px;
     display: flex;
     flex-direction: column;

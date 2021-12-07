@@ -46,7 +46,7 @@ function add_q() {
         while (o.firstChild) {
             o.removeChild(o.firstChild);
         }
-        let f = document.getElementsByClassName("content")[0];
+        let f = document.getElementsByClassName("add_page")[0];
         f.appendChild(c);
     } else {
         alert("最多兩題");
