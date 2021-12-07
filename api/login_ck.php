@@ -20,11 +20,11 @@
 
     $account = $_POST['account'];
     $password = $_POST['password'];
-    $sql ="SELECT `id`,`account`,`name` FROM `accounts` WHERE `account`='$account' AND `password` = '$password'";
+    $sql ="SELECT `id`,`account`,`name`,`permission` FROM `accounts` WHERE `account`='$account' AND `password` = '$password'";
 
     $res= $pdo->query($sql)->fetch();
     if ($res['account'] == $account){
-        $_SESSION['account']=['id'=>$res['id'],'name'=>$res['name']];
+        $_SESSION['account']=['id'=>$res['id'],'name'=>$res['name'],'permission'=>$res['permission']];
         echo 1;
     }else{
         echo 0;

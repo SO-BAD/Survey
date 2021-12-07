@@ -57,7 +57,7 @@ include "./api/db.php" ?>
             </div>
         </div>
     </nav>
-    <section class = "page">
+    <section class="page">
         <div class="content">
             <?php
             if (isset($_GET['do'])) {
@@ -72,20 +72,16 @@ include "./api/db.php" ?>
             }
             ?>
         </div>
-        <div class = "ad">
-            <img src ="ad/ad1.jpg" alt=''>
-            <img src ="ad/ad2.jpg" alt=''>
-            <img src ="ad/ad31.jpg" alt=''>
-            <img src ="ad/ad41.jpg" alt=''>
+        <div class="ad">
             <?php
-                // $sql ="SELECT * FROM `ad` WHERE `status` = '0'";
-                // $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-                // foreach($res as $key =>$data){
-                //     echo "<div style=' width:200px;'>";
-                //     echo "<img style=' width:180px;' src ='{$data['src']}' alt='{$data['intro']}'>";
-                //     echo "</div>";
-                // }
-                
+            $sql = "SELECT * FROM `ad` WHERE `status` = '0'";
+            $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($res as $key => $data) {
+                echo "<a href='#'><img style=' width:180px;' src ='{$data['src']}' alt='{}'></a>";
+                echo "<div style=' width:180px; margin-bottom:10px;text-align:center;'><a href='#'>{$data['intro']}</a>";
+                echo "</div>";
+            }
+
             ?>
         </div>
     </section>

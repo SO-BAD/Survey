@@ -18,6 +18,11 @@ if (isset($_SESSION['account'])) {
 <div class="button_box" >
     <div>
         <?= $member ?>
+        <?php
+            if(isset($_SESSION['account'])&&($_SESSION['account']['permission']) > 0){
+                echo " <a class = 'list-group-item out' href='./index.php?do=ad_manage'>廣告管理</a>";
+            }
+        ?>
         <?= $edit ?>
         <?= $edit_pw ?>
         <?= $button_link; ?>
