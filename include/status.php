@@ -20,7 +20,8 @@ if (isset($_SESSION['account'])) {
         <?= $member ?>
         <?php
             if(isset($_SESSION['account'])&&($_SESSION['account']['permission']) > 0){
-                echo " <a class = 'list-group-item out' href='./index.php?do=ad_manage'>廣告管理</a>";
+                echo " <a class = 'list-group-item out' href='./index.php?do=manage'>廣告管理</a>";
+                echo " <a class = 'list-group-item out' href='./index.php?do=add'>增加版面</a>";
             }
         ?>
         <?= $edit ?>

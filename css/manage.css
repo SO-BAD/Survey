@@ -20,6 +20,12 @@ h1 {
     flex-wrap: wrap;
     margin-bottom: 10px;
 }
+.o0{
+    order:0;
+}
+.o1{
+    order:1;
+}
 
 .img_box {
     width: 80px;
@@ -55,10 +61,15 @@ h1 {
 }
 .status{
     width: 60px;
-    height: 30px;
+    height: 26px;
     font-weight: bolder;
     text-align: center;
     cursor: pointer;
-    color:white;
+    
+}
+.st0{
+    background-color: #eee;
+}
+.st1{
     background-color: black;
 }
