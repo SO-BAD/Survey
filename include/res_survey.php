@@ -14,7 +14,7 @@
 
         $total = count($res);
         $ct = 0;
-        echo "<tr><th colspan='2'><h3>{$res[0]['title']}</h3></th></tr>";
+        echo "<tr><th class='h'colspan='2'><h3>{$res[0]['title']}</h3></th></tr>";
         for ($i = 0; $i < $total; $i++) {
             if ($res[$i]['num'] == $ct) {
                 if ($res[$i]['opt_num'] == "0") {
@@ -23,8 +23,8 @@
                     echo  "<tr class='tr' onclick ='query_opt(this),query_who({$_GET['id']},{$ct},{$res[$i]['opt_num']})'><td>" . $res[$i]['opt'] . "</td><td>" . $res[$i]['count'] . "</td></tr>";
                 }
             } else {
-                $ct++;
                 echo "<tr><th>" . $res[$i]['opt'] . "</th><th>總數</th></tr>";
+                $ct++;
             }
         }
         ?>

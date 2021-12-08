@@ -1,5 +1,11 @@
 <div class="managePage">
-    <h1>Ad Manage</h1>
+    <div class="manage_header">
+        
+        Ad Manage
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
     <?php
     if (isset($_SESSION['account']) && ($_SESSION['account']['permission']) > 0) {
         if (isset($_GET['id'])){
@@ -49,6 +55,56 @@
     ?>
 
 </div>
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">ADD</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+        <form action="./api/add.php" method="post" enctype="multipart/form-data">
+            <table>
+                <tr>
+                    <td>
+                        選擇廣告圖:
+                    </td>
+                    <td>
+                        <input type="file" name = "image">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        廣告名稱
+                    </td>
+                    <td> 
+                        <input type="text" name = "name">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        廣告文字
+                    </td>
+                    <td><input type="text" name = "intro"></td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        <input type="submit" class= "btn btn-info">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <script>
     function change_status(obj,id,num){

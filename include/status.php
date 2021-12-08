@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_SESSION['account'])) {
-    $member = "<i class='fas fa-user-cog ' onclick='sw()' style='cursor: pointer;'></i>";
+    $member = "<i class='fas fa-user-cog '  style='cursor: pointer;'></i>";
     $edit = " <a class = 'list-group-item out' href='./index.php?do=edit_member'>編輯資料</a>";
     $edit_pw = " <a class = 'list-group-item out' href='./index.php?do=edit_pw'>修改密碼</a>";
     $button_link =  "<a class= 'out list-group-item' href='./api/logout.php'>登出</a>";
@@ -15,14 +15,14 @@ if (isset($_SESSION['account'])) {
 <div class="online_box">
 
 </div>
-<div class="button_box" >
+<div class="button_box">
     <div>
         <?= $member ?>
         <?php
-            if(isset($_SESSION['account'])&&($_SESSION['account']['permission']) > 0){
-                echo " <a class = 'list-group-item out' href='./index.php?do=manage'>廣告管理</a>";
-                echo " <a class = 'list-group-item out' href='./index.php?do=add'>增加版面</a>";
-            }
+        if (isset($_SESSION['account']) && ($_SESSION['account']['permission']) > 0) {
+            echo " <a class = 'list-group-item out' href='./index.php?do=manage'>廣告管理</a>";
+            echo " <a class = 'list-group-item out' href='./index.php?do=per_manage'>權限管理</a>";
+        }
         ?>
         <?= $edit ?>
         <?= $edit_pw ?>
@@ -32,15 +32,49 @@ if (isset($_SESSION['account'])) {
 <script>
     var st = 0;
 
-    function sw() {
-        st = (st + 1) % 2;
+    // function sw() {
+    //     st = (st + 1) % 2;
+    //     let out = document.getElementsByClassName("out");
+    //     for (let i = 0; i < out.length; i++) {
+    //         document.getElementsByClassName("out")[i].style.display = (st == 0) ? "none" : "block";
+    //     }
+    // }
+    window.onclick = function(event) {
+        let st = 0;
+        let ct = 0;
         let out = document.getElementsByClassName("out");
-        for (let i = 0; i < out.length; i++) {
-            document.getElementsByClassName("out")[i].style.display = (st == 0) ? "none" : "block";
-        }
-    }
+        let f = document.getElementsByClassName("fas fa-user-cog ")[0];
+        if (event.target == f) {
+            if (st == 0) {
+                for (let i = 0; i < out.length; i++) {
+                    document.getElementsByClassName("out")[i].style.display = "block";
+                }
+                st++;
+            }else{
+                for (let i = 0; i < out.length; i++) {
+                    document.getElementsByClassName("out")[i].style.display = "none";
+                }
+                st =0;
+            }
 
-    
+        }
+        for (let i = 0; i < out.length; i++) {
+            if (event.target != out[i] && event.target != f) {
+                ct++;
+            }
+        }
+        if (ct == out.length) {
+            for (let i = 0; i < out.length; i++) {
+                document.getElementsByClassName("out")[i].style.display = "none";
+            }
+        }
+        // if (event.target != button_box) {
+        //   let out = document.getElementsByClassName("out");
+        //     for (let i = 0; i < out.length; i++) {
+        //         document.getElementsByClassName("out")[i].style.display ="none";
+        //     }
+        // }
+    }
 </script>
 <style>
     .online_box {
