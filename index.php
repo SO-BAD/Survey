@@ -2,7 +2,15 @@
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
-include "./api/db.php" ?>
+include "./api/db.php";
+if(isset($_GET['story'])){
+    $nav_bg_class = "story_nav_bg";
+}else{
+    $nav_bg_class = "survey_nav_bg";
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +52,8 @@ include "./api/db.php" ?>
 
         </div>
     </div>
-    <nav class="">
+
+    <nav class="<?=$nav_bg_class;?>">
         <div class="header">
             <div class="survey_box ">
                 <a href="./index.php">Survey</a>
