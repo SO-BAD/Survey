@@ -10,7 +10,6 @@ if (isset($_SESSION['account'])) {
 ?>
 <form action="./api/edit_memData.php" id="pwForm" method="post">
     <table>
-
         <tr>
             <td><label for="mem0">name</label></td>
             <td><input class="mem_input" id="name" type="text" name="mem[]" value="<?= $res['name'] ?>" onkeyup="re_ck(this);"><i id="name_i" class='fas fa-exclamation-triangle empty'></i>
@@ -25,7 +24,7 @@ if (isset($_SESSION['account'])) {
         </tr>
         <tr>
             <td><label for="mem2">生日</label></td>
-            <td> <input class="mem_input" id="b" type="date" name="mem[]" value="<?= $res['birthday'] ?>" onchange="empty(this)"><i id = "b_i"class='fas fa-exclamation-triangle empty'></i></td>
+            <td> <input class="mem_input" id="b" type="date" name="mem[]" value="<?= $res['birthday'] ?>" onchange="empty(this)"><i id="b_i" class='fas fa-exclamation-triangle empty'></i></td>
         </tr>
         <tr>
             <td><label for="live">live</label></td>
@@ -60,7 +59,7 @@ if (isset($_SESSION['account'])) {
             </td>
         </tr>
     </table>
-    <input id = "submit"class="btn btn-info mx-auto pw_btn" type="button" onclick="update_ck()" style="display:block;" value="修改">
+    <input id="submit" class="btn btn-info mx-auto pw_btn" type="button" onclick="update_ck()" style="display:block;" value="修改">
 </form>
 <style>
     #pwForm {
@@ -93,10 +92,8 @@ if (isset($_SESSION['account'])) {
     }
 </style>
 <script>
-    var st = {
-            'name': 0,
-            'birthday': 0,
-        };
+    var name_st =  0;
+    var birthday_st =  0;
     function re_ck(obj) {
         if (obj.value.length >= 3) {
             $.post("./api/re_ck.php", {
@@ -104,16 +101,16 @@ if (isset($_SESSION['account'])) {
                     value: obj.value,
                 },
                 function(res) {
-                    if (res == 0) {
+                    if (res == "0") {
                         document.getElementById((obj.id + "_alert")).innerText = "OK";
                         document.getElementById((obj.id + "_alert")).style.color = "green";
                         document.getElementById((obj.id + "_i")).style.display = "none";
-                        st.name = 1;
+                        name_st = 1;
                     } else {
                         document.getElementById((obj.id + "_alert")).innerText = "NO";
                         document.getElementById((obj.id + "_alert")).style.color = "red";
                         document.getElementById((obj.id + "_i")).style.display = "none";
-                        st.name = 0;
+                        name_st = 0;
                     }
                 }
             );
@@ -121,36 +118,34 @@ if (isset($_SESSION['account'])) {
             document.getElementById((obj.id + "_alert")).innerText = "至少3字元";
             document.getElementById((obj.id + "_alert")).style.color = "red";
             document.getElementById((obj.id + "_i")).style.display = "none";
-            st.name = 0;
+            name_st = 0;
         } else {
             document.getElementById((obj.id + "_alert")).innerText = "";
             document.getElementById((obj.id + "_i")).style.display = "inline-block";
-            st.name = 0;
+            name_st = 0;
         }
     }
 
     function empty(obj) {
-        if(obj.value == ""){
-            document.getElementById((obj.id+"_i")).style.display = "inline-block" ;
-            st.birthday = 0;
-        }else{
-            document.getElementById((obj.id+"_i")).style.display = "none";
-            st.birthday = 1;
+        if (obj.value == "") {
+            document.getElementById((obj.id + "_i")).style.display = "inline-block";
+            birthday_st = 0;
+        } else {
+            document.getElementById((obj.id + "_i")).style.display = "none";
+            birthday_st = 1;
         }
     }
 
     function update_ck() {
-        let sum = 0;
         let name = document.getElementById("name");
         let b = document.getElementById("b");
         empty(b);
         re_ck(name);
-        for (let value of Object.entries(st)) {
-                sum = sum + value[1];
-            }
-            if (sum == 2) {
-                document.getElementById('submit').type = 'submit';
-                document.getElementById('submit').click();
-            }
+        let sum = birthday_st+name_st;
+        console.log(sum);
+        if (sum == 2) {
+            document.getElementById('submit').type = 'submit';
+            document.getElementById('submit').click();
+        }
     }
 </script>

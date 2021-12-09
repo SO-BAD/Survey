@@ -45,8 +45,19 @@
 }
 
 ?>
-<button onclick="data()"class ="btn btn-primary">修改</button>
+<button onclick="data()"class ="btn btn-primary d-block mx-auto mt-3">修改</button>
 <style>
+    table{
+        width: 40%;
+        margin: auto;
+    }
+    th{
+        text-align: center;
+    }
+    td{
+        height: 30px;
+        text-align: center;
+    }
     td:nth-child(1){
         width: 40px;
     }

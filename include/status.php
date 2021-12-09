@@ -30,14 +30,14 @@ if (isset($_SESSION['account'])) {
     </div>
 </div>
 <script>
-    var st = 0;
+    var display_st = 0;
     window.onclick = function(event) {
         let ct = 0;
         let out = document.getElementsByClassName("out");
         let f = document.getElementsByClassName("fas fa-user-cog ")[0];
         if (event.target == f) {
-            st = (st + 1) % 2;
-            switch (st) {
+            display_st = (display_st + 1) % 2;
+            switch (display_st) {
                 case 1:
                     for (let i = 0; i < out.length; i++) {
                         document.getElementsByClassName("out")[i].style.display = "block";
@@ -60,7 +60,7 @@ if (isset($_SESSION['account'])) {
             for (let i = 0; i < out.length; i++) {
                 document.getElementsByClassName("out")[i].style.display = "none";
             }
-            st =0;
+            display_st =0;
         }
 
     }

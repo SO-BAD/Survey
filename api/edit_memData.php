@@ -23,6 +23,6 @@
         $str = implode(",",$tmp);
         $sql = "UPDATE `accounts` SET ".$str." WHERE `id` = '{$_SESSION['account']['id']}'";
         $pdo->exec($sql);
-        echo "<script>alert('修改成功，點擊確認回首頁');window.location.href='../index.php';</script>";
+        echo "<script>alert('修改成功');window.location.href='../index.php';</script>";
     }
 ?>

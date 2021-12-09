@@ -31,8 +31,8 @@
                 <?php echo "<img class='img_box' src ='{$data['src']}' alt=''>"; ?>
                 <div class='edit_box'>
                     <div>
-                        <input class='intro' type="text" value="<?= $data['intro']; ?>">
-                        <button class="intro_btn">修改</button>
+                        <input class='intro' type="text" value="<?= $data['intro']; ?>" id = "input<?=$data['id']?>">
+                        <button class="intro_btn" onclick="edit_intro(<?=$data['id']?>)">修改</button>
                     </div>
                     <div>
                         <?php
@@ -107,16 +107,17 @@
   </div>
 
 <script>
-    function change_status(obj,id,num){
-    //     console.log(num);
-    //     let status = document.getElementsByClassName("manage_box")[num].classList[1].substr(1,1);
-    //     console.log(status);
-    //     document.getElementsByClassName("manage_box")[num].classList.remove(("o"+status));
-    //     document.getElementsByClassName("status")[num].classList.remove(("st"+status));
-    //     status = (parseInt(status)+1)%2;
-    //     document.getElementsByClassName("manage_box")[num].classList.add(("o"+status));
-    //     document.getElementsByClassName("status")[num].classList.add(("st"+status));
-    //     document.getElementsByClassName("status")[num].innerText = (status ==1) ?"未上架":"上架";
+    function edit_intro(id){
+        let intro = document.getElementById(("input"+id)).value;
+        $.post("./api/edit_add.php",
+        {
+            intro:intro,
+            id:id
+        },function(res){
+            alert(res);
+            window.location.href = "./index.php?do=manage";
+        }
+        )
     }
 </script>
 <link rel="stylesheet" href="./css/manage.css">
