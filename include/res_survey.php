@@ -30,7 +30,7 @@
         ?>
     </table>
     <div style="display:flex; justify-content:center; padding-top:5px;">
-        <a href="./index.php" style="margin:auto;">首頁</a>
+        <a href="./index.php" style="margin:auto;" class= "btn btn-info">首頁</a>
     </div>
 </div>
 

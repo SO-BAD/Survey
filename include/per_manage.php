@@ -9,7 +9,6 @@
     echo "<th>Name</th>";
     echo "<th>Permission</th>";
     echo "</tr>";
-    $level = $res[0]['permission'];
     foreach ($res as $data) {   
         if($data['permission']<$_SESSION['account']['permission']){
         ?>
@@ -23,7 +22,7 @@
             <td>
                 <select name="" id="">
                     <?php
-                        for($i=($level-1);$i>-1;$i--){
+                        for($i=($_SESSION['account']['permission']-1);$i>-1;$i--){
                             
                             echo "<option value ='{$i}'";
                             if($data['permission'] == $i){

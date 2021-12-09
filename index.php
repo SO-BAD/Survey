@@ -60,20 +60,16 @@ include "./api/db.php" ?>
     <section class="page">
         <div class="content">
             <?php
-            if (isset($_GET['do'])) {
-                if (isset($_SESSION['account'])) {
-                    $str = "./include/" . $_GET['do'] . ".php";
-                    include $str;
-                } else {
-                    header("location:./login.php");
-                }
+            if (isset($_GET['do']) && file_exists(("./include/" . $_GET['do'] . ".php"))) {
+                $str = "./include/" . $_GET['do'] . ".php";
+                include $str;
             } else {
                 include "./include/show_survey.php";
             }
             ?>
         </div>
         <div class="aside">
-            <?php include "./include/ad_area.php";?>
+            <?php include "./include/ad_area.php"; ?>
         </div>
     </section>
     <footer>

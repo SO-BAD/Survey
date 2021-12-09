@@ -31,49 +31,38 @@ if (isset($_SESSION['account'])) {
 </div>
 <script>
     var st = 0;
-
-    // function sw() {
-    //     st = (st + 1) % 2;
-    //     let out = document.getElementsByClassName("out");
-    //     for (let i = 0; i < out.length; i++) {
-    //         document.getElementsByClassName("out")[i].style.display = (st == 0) ? "none" : "block";
-    //     }
-    // }
     window.onclick = function(event) {
-        let st = 0;
         let ct = 0;
         let out = document.getElementsByClassName("out");
         let f = document.getElementsByClassName("fas fa-user-cog ")[0];
         if (event.target == f) {
-            if (st == 0) {
-                for (let i = 0; i < out.length; i++) {
-                    document.getElementsByClassName("out")[i].style.display = "block";
-                }
-                st++;
-            }else{
-                for (let i = 0; i < out.length; i++) {
-                    document.getElementsByClassName("out")[i].style.display = "none";
-                }
-                st =0;
+            st = (st + 1) % 2;
+            switch (st) {
+                case 1:
+                    for (let i = 0; i < out.length; i++) {
+                        document.getElementsByClassName("out")[i].style.display = "block";
+                    }
+                    break;
+                case 0:
+                    for (let i = 0; i < out.length; i++) {
+                        document.getElementsByClassName("out")[i].style.display = "none";
+                    }
+                    break;
             }
-
-        }
-        for (let i = 0; i < out.length; i++) {
-            if (event.target != out[i] && event.target != f) {
-                ct++;
+        } else {
+            for (let i = 0; i < out.length; i++) {
+                if (event.target != out[i]) {
+                    ct++;
+                }
             }
         }
         if (ct == out.length) {
             for (let i = 0; i < out.length; i++) {
                 document.getElementsByClassName("out")[i].style.display = "none";
             }
+            st =0;
         }
-        // if (event.target != button_box) {
-        //   let out = document.getElementsByClassName("out");
-        //     for (let i = 0; i < out.length; i++) {
-        //         document.getElementsByClassName("out")[i].style.display ="none";
-        //     }
-        // }
+
     }
 </script>
 <style>

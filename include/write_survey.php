@@ -1,7 +1,7 @@
 <form action="./api/insert_surveylog.php" method="post">
 
     <input type="hidden" name="id" value="<?= $_GET['id']; ?>">
-    <div class= "write_page"> 
+    <div class="write_page">
         <?php
 
 
@@ -29,8 +29,9 @@
                     echo "<h3>" . $res[$i]['opt'] . "</h3>";
                 } else {
         ?>
-                    <div class= 'input_box'><input type="radio" id="<?php echo "q" . $ct . $res[$i]['opt_num']; ?>" name="r[<?= $ct ?>][]" value="<?= $res[$i]['opt_num']; ?>" <?php echo ($res[$i]['opt_num'] == "1") ? " Checked" : "";  ?>>
-                    <label for='<?php echo "q" . $ct . $res[$i]['opt_num']; ?>'><?= $res[$i]['opt'] ?></label></div>
+                    <div class='input_box'><input type="radio" id="<?php echo "q" . $ct . $res[$i]['opt_num']; ?>" name="r[<?= $ct ?>][]" value="<?= $res[$i]['opt_num']; ?>" <?php echo ($res[$i]['opt_num'] == "1") ? " Checked" : "";  ?>>
+                        <label for='<?php echo "q" . $ct . $res[$i]['opt_num']; ?>'><?= $res[$i]['opt'] ?></label>
+                    </div>
         <?php
                 }
             } else {
@@ -39,7 +40,10 @@
             }
         }
         ?>
-        <input type="submit" value="完成" class ="btn btn-info">
+        <div class= "mt-5">
+            <input type="submit" value="完成" class="btn btn-info">
+            <a href="./index.php" class="btn btn-info">取消</a>
+        </div>
     </div>
 </form>
 <link rel="stylesheet" href="./css/write_survey.css">
