@@ -56,7 +56,7 @@ if(isset($_GET['story'])){
     <nav class="<?=$nav_bg_class;?>">
         <div class="header">
             <div class="survey_box ">
-                <a href="./index.php">Survey</a>
+                <a href="./index.php">問卷</a>
             </div>
             <div class="story_box">
                 <a href="./index.php">Story</a>
