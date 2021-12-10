@@ -92,8 +92,9 @@ if (isset($_SESSION['account'])) {
     }
 </style>
 <script>
-    var name_st =  0;
-    var birthday_st =  0;
+    var name_st = 0;
+    var birthday_st = 0;
+
     function re_ck(obj) {
         if (obj.value.length >= 3) {
             $.post("./api/re_ck.php", {
@@ -107,10 +108,17 @@ if (isset($_SESSION['account'])) {
                         document.getElementById((obj.id + "_i")).style.display = "none";
                         name_st = 1;
                     } else {
-                        document.getElementById((obj.id + "_alert")).innerText = "NO";
-                        document.getElementById((obj.id + "_alert")).style.color = "red";
-                        document.getElementById((obj.id + "_i")).style.display = "none";
-                        name_st = 0;
+                        if (obj.value == document.getElementsByClassName("user_box")[0].innerText) {
+                            document.getElementById((obj.id + "_alert")).innerText = "";
+                            document.getElementById((obj.id + "_i")).style.display = "none";
+                            name_st = 1;
+                        } else {
+                            console.log(document.getElementsByClassName("online_box")[0].innerText);
+                            document.getElementById((obj.id + "_alert")).innerText = "NO";
+                            document.getElementById((obj.id + "_alert")).style.color = "red";
+                            document.getElementById((obj.id + "_i")).style.display = "none";
+                            name_st = 0;
+                        }
                     }
                 }
             );
@@ -141,7 +149,7 @@ if (isset($_SESSION['account'])) {
         let b = document.getElementById("b");
         empty(b);
         re_ck(name);
-        let sum = birthday_st+name_st;
+        let sum = birthday_st + name_st;
         console.log(sum);
         if (sum == 2) {
             document.getElementById('submit').type = 'submit';

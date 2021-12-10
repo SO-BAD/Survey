@@ -1,8 +1,8 @@
 <?php
-    session_start();
-    if(isset($_SESSION['account'])){
-        echo "<script>alert('已登入');window.location.href='index.php';</script>";
-    }
+session_start();
+if (isset($_SESSION['account'])) {
+    echo "<script>alert('已登入');window.location.href='index.php';</script>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +48,7 @@
             align-content: flex-start;
         }
 
-        .input_box * {
+        .input_box>* {
             margin-top: 30px;
         }
 
@@ -62,6 +62,7 @@
         .input_box input {
             width: 180px;
             height: 20px;
+
         }
 
         .empty {
@@ -70,11 +71,14 @@
             font-size: 20px;
             margin-left: 10px;
         }
-        .reg_box{
+
+        .reg_box {
+            width: calc(100% - 50px);
             font-size: 12px;
             margin-left: 50px;
         }
-        .reg_box a{
+
+        .reg_box a {
             text-decoration: none;
         }
     </style>
@@ -96,7 +100,14 @@
                     ct++;
                 }
             }
-            if (ct == 2) acc_ck();
+            if (ct == 3){
+                if(document.getElementById('a').innerText != document.getElementsByTagName('input')[2].value){
+                    alert("驗證碼錯誤");
+                    window.location.href = './login.php';
+                }else{
+                    acc_ck();
+                }
+            } 
         }
 
         function acc_ck() {
@@ -130,10 +141,24 @@
             <i class='fas fa-exclamation-triangle empty'></i>
             <label for="password">Password</label><input type="password" name="password" id="password">
             <i class='fas fa-exclamation-triangle empty'></i>
+
+            <div style="width:100%; display :flex;height:60px; padding-left:10px;">
+                <div style="display:flex;  flex-direction: column;">
+                    <span>請輸入驗證碼</span>
+                    <input type="text" style="width:120px;">
+                    <i class='fas fa-exclamation-triangle empty'></i>
+                </div>
+                <div style ="margin-left:30px">
+                    <?php include_once "./include/captcha.php";   ?>
+                    
+                </div>
+            </div>
+
+
             <button class="btn btn-info mt-3 py-1" style="margin-left:100px;" onclick="input_ck()">登入</button>
             <a href="./index.php" class="btn btn-info mt-3 ml-3 py-1">取消</a>
         </div>
-        <div class ="reg_box">
+        <div class="reg_box">
             點此<a href="./insert.php">註冊</a>
         </div>
     </section>

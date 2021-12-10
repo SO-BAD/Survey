@@ -5,15 +5,19 @@ if (isset($_SESSION['account'])) {
     $edit = " <a class = 'list-group-item out' href='./index.php?do=edit_member'>編輯資料</a>";
     $edit_pw = " <a class = 'list-group-item out' href='./index.php?do=edit_pw'>修改密碼</a>";
     $button_link =  "<a class= 'out list-group-item' href='./api/logout.php'>登出</a>";
+    $user_name =$_SESSION['account']['name'];
 } else {
     $member = "";
     $edit = "";
     $edit_pw = "";
     $button_link =  "<a href='./login.php'><button class='btn btn-primary'>登入</button></a>";
+    $user_name ="";
 }
 ?>
 <div class="online_box">
-
+    <div class = "user_box">
+        <?= $user_name;?>
+    </div>
 </div>
 <div class="button_box">
     <div>
