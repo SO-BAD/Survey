@@ -51,6 +51,7 @@ if(isset($_GET['story'])){
         <div class="res_content">
 
         </div>
+        
     </div>
 
     <nav class="<?=$nav_bg_class;?>">

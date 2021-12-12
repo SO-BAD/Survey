@@ -38,7 +38,8 @@ echo "<div id ='a' style='display:none;'>".$str."</div>";
 
 function fonttoimg($font,$font_size, $deg , $key)
 {
-    $fontBox = imagettfbbox($font_size, $deg, 'E:\web\file\font\arial.ttf', $font);
+    // $fontBox = imagettfbbox($font_size, $deg, 'E:\web\file\font\arial.ttf', $font);
+    $fontBox = imagettfbbox($font_size, $deg, 'D:\web\Survey\font\arial.ttf', $font);
     //                    (  ,  ,            絕對路徑          , string )
     $small_x = min($fontBox[0],$fontBox[2],$fontBox[4],$fontBox[6]);
     $small_y = min($fontBox[1],$fontBox[3],$fontBox[5],$fontBox[7]);
@@ -50,7 +51,8 @@ function fonttoimg($font,$font_size, $deg , $key)
     $black =  imagecolorallocate($dstimg, 0, 0, 0);
     imagefill($dstimg, 0, 0, $white);
 
-    $res = imagettftext($dstimg, $font_size, $deg, (0 - $small_x), (0 - $small_y), $black, 'E:\web\file\font\arial.ttf', $font);
+    // $res = imagettftext($dstimg, $font_size, $deg, (0 - $small_x), (0 - $small_y), $black, 'E:\web\file\font\arial.ttf', $font);
+    $res = imagettftext($dstimg, $font_size, $deg, (0 - $small_x), (0 - $small_y), $black, 'D:\web\Survey\font\arial.ttf', $font);
 
     imagepng($dstimg, './captcha/captcha'.$key.'.png');
 }
