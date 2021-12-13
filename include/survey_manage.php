@@ -56,5 +56,9 @@ $survey_status = ['投票中', '已截止', '關閉中'];
 <style>
     td {
         height: 35px;
+        transition: 0.3s;
+    }
+    tr:hover{
+        background-color:lightblue;
     }
 </style>

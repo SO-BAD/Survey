@@ -64,8 +64,9 @@ $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         margin-right: 20px;
         cursor: pointer;
         transition: 0.5s;
+        color:blue;
     }
-    .display_btn:hover{
+    tr:hover{
         background-color:powderblue;
     }
 </style>

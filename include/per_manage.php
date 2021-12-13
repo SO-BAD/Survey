@@ -67,7 +67,9 @@
     td:nth-child(3){
         width: 60px;
     }
-
+    tr:hover{
+        background-color: lightblue;
+    }
 </style>
 <script>
     var origin_id = new Array();
