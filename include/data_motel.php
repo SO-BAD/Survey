@@ -13,17 +13,24 @@ $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 <div style="width:100%; min-height:100%; padding:10px 30px;">
     <table style="width:100%;text-align:center;">
         <tr>
-            <td>id</td>
-            <td>問卷</td>
-            <td>圓餅圖</td>
+            <th>id</th>
+            <th>問卷</th>
+            <th>MODEL</th>
         </tr>
         <?php
         foreach ($res as $key => $data) {   ?>
 
             <tr>
-                <td><?= $data['id']; ?></td>
-                <td><?= $data['title']; ?></td>
-                <td onclick="model_block(<?= $data['id']; ?>)">分析圖</td>
+                <td style="width:80px;"><?= $data['id']; ?></td>
+                <td style="width:160px;"><?= $data['title']; ?></td>
+                <td style="display:flex; justify-content:center;">
+                    <div class="display_btn"onclick="model_block(0,<?= $data['id']; ?>)">
+                        查看圓餅圖
+                    </div>
+                    <div class="display_btn"onclick="model_block(1,<?= $data['id']; ?>)">
+                        查看長條圖
+                    </div>
+                </td>
             </tr>
 
         <?php } ?>
@@ -47,15 +54,31 @@ $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         background-color: white;
         margin: 50px auto;
     }
+    th{
+        color: white;
+        background-color: #333;
+    }
+    .display_btn{
+        width: 100px;
+        height: 30px;
+        margin-right: 20px;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+    .display_btn:hover{
+        background-color:powderblue;
+    }
 </style>
 <script>
-    function model_block(s_id) {
+    function model_block(type,s_id) {
         let w = window.innerWidth;
         let h = window.innerHeight;
         document.getElementById("chart_back").style.width = w + "px";
         document.getElementById("chart_back").style.height = h + "px";
         document.getElementById("chart_back").style.display = "block";
         document.getElementById("chart_back").style.zIndex = 99;
+
+        let model = ['pie','bar'];
 
 
         $.post("./api/query_model_data.php", {
@@ -102,7 +125,7 @@ $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
                         box.appendChild(c);
                         var ctx = document.getElementsByClassName("chart")[i].getContext('2d');
                         var chart = new Chart(ctx, {
-                            type: 'pie',
+                            type: model[type],
                             data: {
                                 labels: labels_total[i],
                                 datasets: [{
@@ -126,7 +149,7 @@ $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
                     box.appendChild(c);
                     var ctx = document.getElementsByClassName("chart")[0].getContext('2d');
                     var chart = new Chart(ctx, {
-                        type: 'pie',
+                        type: model[type],
                         data: {
                             labels: arr_labels,
                             datasets: [{
