@@ -22,7 +22,7 @@ $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
                 <td>
                     <?php
                     if (isset($_SESSION['account'])) {
-                        if (!$data['status']) {
+                        if ($data['status'] == 0) {
                             $sql = "SELECT `id` FROM `surveylog` WHERE `u_id` ='{$_SESSION['account']['id']}'AND `s_id`= '{$data['id']}'";
                             $ck_res = $pdo->query($sql)->fetchColumn();
                             if ($ck_res) {
@@ -30,8 +30,10 @@ $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
                             } else {
                                 echo "<a href='./index.php?do=write_survey&id=" . $data['id'] . "'>填寫</a>";
                             }
-                        } else {
+                        } else if ($data['status'] == 1){
                             echo "已截止";
+                        }else{
+                            echo "關閉中";
                         }
                         $res_box ="<a href='./index.php?do=res_survey&id=" . $data['id'] . "'>查看</a>";
                     } else {

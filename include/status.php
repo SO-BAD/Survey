@@ -27,6 +27,7 @@ if (isset($_SESSION['account'])) {
             echo " <a class = 'list-group-item out' href='./index.php?do=manage'>廣告管理</a>";
             echo " <a class = 'list-group-item out' href='./index.php?do=per_manage'>權限管理</a>";
             echo " <a class = 'list-group-item out' href='./index.php?do=data_motel'>資料模型</a>";
+            echo " <a class = 'list-group-item out' href='./index.php?do=survey_manage'>問卷管理</a>";
         }
         ?>
         <?= $edit ?>

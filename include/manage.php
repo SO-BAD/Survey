@@ -19,6 +19,8 @@
                     $pdo->exec($delete_sql);
                     unlink($d_id_res['src']);
                     echo "<script>alert('已刪除');window.location.href='./index.php?do=manage';</script>";
+                }else{
+                    echo "<script>alert('檔案不存在');window.location.href='./index.php?do=manage';</script>";
                 }
             }
 
@@ -34,7 +36,7 @@
             $change_status = ($id_res['status'] + 1) % 2;
             $update = "UPDATE `ad` SET `status` = '{$change_status}' WHERE `id` = '{$_GET['id']}'";
             $pdo->exec($update);
-            echo "<script>alert('已更新狀態');window.location.href='./index.php?do=manage';</script>";
+            echo "<script>window.location.href='./index.php?do=manage';</script>";
         }
 
 
