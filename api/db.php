@@ -46,7 +46,7 @@
         }
 
         $sql = "INSERT INTO `$table`(".$str_col.") VALUES (".$str_data.")";
-        // echo $sql;
+        echo $sql;
         $pdo->exec($sql);
     }
 

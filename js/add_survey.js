@@ -15,14 +15,14 @@ function add_o(num) {
         let f = document.getElementsByClassName("o_box")[num];
         let str = 'o' + num + '-' + opt_ct[num];
         let str1 = "<div id = '" + str + "'  class='o'>";
-        let str2 = "<i class='far fa-circle'></i><input type='text' class='opt' name='q[" + num + "][]' placeholder='Option' onkeyup="+'"'+"ck(this)"+'"'+"'>";
+        let str2 = "<i class='far fa-circle'></i><input type='text' class='opt' name='q[" + num + "][]' placeholder='請輸入選項' onkeyup="+'"'+"ck(this)"+'"'+"'>";
         let str3 = "<i id = 'o" + num + "-" + opt_ct[num] + "a' class='fas fa-exclamation-triangle empty'></i><i class='fas fa-times'";
         let str4 = 'onclick ="' + "del('" + str + "')" + '"' + "'></i>";
         let d = document.createElement("div");
         d.innerHTML = str1 + str2 + str3 + str4;
         f.appendChild(d);
     } else {
-        alert("最多五個Option");
+        alert("最多五個選項");
     }
 }
 
@@ -41,7 +41,7 @@ function add_q() {
 
         c.getElementsByClassName("q_t_i")[0].setAttribute("name", ("q[" + q_ct + "][]"));
         c.getElementsByClassName("q_t_i")[0].value="";
-        c.getElementsByClassName("fa-plus")[0].setAttribute("onclick", ("add_o(" + q_ct + ")"));
+        c.getElementsByClassName("fa-plus")[0].setAttribute("onclick", ("add_o(" + q_ct + "),reset_submit()"));
         let o = c.getElementsByClassName("o_box")[0];
         while (o.firstChild) {
             o.removeChild(o.firstChild);
@@ -54,6 +54,7 @@ function add_q() {
 }
 var myForm = document.getElementById("myform");
 function empty_ck() {
+    let ct =0;
     let input = myForm.getElementsByTagName("input");
     let empty = myForm.getElementsByClassName("empty");
     for (let i = 0; i < input.length; i++) {
@@ -61,7 +62,12 @@ function empty_ck() {
             empty[i].style.opacity = 1;
         } else {
             empty[i].style.opacity = 0;
+            ct++;
         }
+    }
+    if(ct == input.length){
+        document.getElementById("submit").type ="submit"; 
+        document.getElementById("submit").click(); 
     }
 }
 var timeN = new Date();
@@ -91,4 +97,8 @@ function ck(obj){
         }  
     }
     document.getElementById("submit").type =(ct == input.length)?"submit":"button"; 
+}
+
+function reset_submit(){
+    document.getElementById("submit").type ="button"; 
 }

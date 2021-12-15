@@ -17,7 +17,6 @@ foreach($_POST['q'] as $key => $data){
 }
 $acc_col = ['title','end_time','author'];
 $acc_data =[$_POST['s'][0],$_POST['s'][1],$_SESSION['account']['name']];
-
 insert('surveys',$acc_col,$acc_data);
 
 $sql = "SELECT `id` FROM `surveys` WHERE `author`='".$_SESSION['account']['name']."' ORDER BY `id` DESC LIMIT 0,1";

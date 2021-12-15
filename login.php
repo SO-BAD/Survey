@@ -132,7 +132,7 @@ if (isset($_SESSION['account'])) {
 </head>
 
 <body onload="section_mt()" onresize="section_mt()">
-    <section class="section">
+    <div class="section">
         <header class="top">
             <h1>Login</h1>
         </header>
@@ -149,8 +149,7 @@ if (isset($_SESSION['account'])) {
                     <i class='fas fa-exclamation-triangle empty'></i>
                 </div>
                 <div style ="margin-left:30px">
-                    <?php include_once "./include/captcha.php";   ?>
-                    
+                    <?php include_once "./include/captcha.php";?>
                 </div>
             </div>
 
@@ -161,7 +160,7 @@ if (isset($_SESSION['account'])) {
         <div class="reg_box">
             點此<a href="./insert.php">註冊</a>
         </div>
-    </section>
+    </div>
 </body>
 
 

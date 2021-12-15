@@ -40,8 +40,7 @@
     }
     echo "</table>";
 } else {
-    header("location:./index.php");
-    exit;
+    echo "<script>window.location.href = './login.php'</script>";
 }
 
 ?>

@@ -70,8 +70,7 @@
             $i++;
         }
     } else {
-        header("location:./index.php");
-        exit;
+        echo "<script>window.location.href = './index.php'</script>";
     }
     ?>
 

@@ -1,4 +1,8 @@
-
+<?php
+    if(!isset($_SESSION['account'])){
+        echo "<script>window.location.href = './login.php'</script>";
+    }
+?>
 <div class="form_box">
     <div class = "form_header">
        新增問卷
@@ -18,13 +22,13 @@
                     <i class="far fa-circle"></i><input type="text" class="opt" name="q[0][]"placeholder="請輸入選項" onkeyup="ck(this)"><i class='fas fa-exclamation-triangle empty'></i>
                 </div>
             </div>
-            <i class="fas fa-plus" onclick="add_o(0)" style="cursor: pointer; margin-left:40px; ">&ensp;新增選項</i>
+            <i class="fas fa-plus" onclick="add_o(0),reset_submit()" style="cursor: pointer; margin-left:40px; ">&ensp;新增選項</i>
         </div>
     </div>
     <div class="footer container-fluid">
         <div class="row">
             <div class = "ml-5">
-                <input type="button" value="新增問題" class='btn btn-info' onclick="add_q()">
+                <input type="button" value="新增問題" class='btn btn-info' onclick="add_q(),reset_submit()">
             </div>
         </div>
         <div class="row d-flex justify-content-center mt-5">
