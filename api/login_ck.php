@@ -10,7 +10,7 @@
         $end_time = strtotime($data['end_time']);
         $now_time = strtotime(date("Y-m-d"));
         if($now_time > $end_time){
-            $st_sql ="UPDATE `surveys` SET `status` ='1' WHERE `id` = '{$data['id']}'";
+            $st_sql ="UPDATE `surveys` SET `status` ='2' WHERE `id` = '{$data['id']}'";
             $pdo->exec($st_sql);
         }
     }

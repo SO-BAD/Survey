@@ -3,10 +3,14 @@ header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 include "./api/db.php";
-if(isset($_GET['story'])){
+if( isset($_GET['do']) && $_GET['do'] == "show_story"){
     $nav_bg_class = "story_nav_bg";
+    $survey_active_box = "survey_box ";
+    $story_active_box = "story_box active";
 }else{
     $nav_bg_class = "survey_nav_bg";
+    $survey_active_box = "survey_box active";
+    $story_active_box = "story_box";
 }
 
 
@@ -56,11 +60,11 @@ if(isset($_GET['story'])){
 
     <nav class="<?=$nav_bg_class;?>">
         <div class="header">
-            <div class="survey_box ">
+            <div class="<?=$survey_active_box ;?>">
                 <a href="./index.php">問卷</a>
             </div>
-            <div class="story_box">
-                <a href="./index.php">Story</a>
+            <div class="<?=$story_active_box ;?>">
+                <a href="./index.php?do=show_story">Story</a>
             </div>
             <div class="status_box">
                 <?php include "./include/status.php"; ?>

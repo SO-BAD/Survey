@@ -44,7 +44,18 @@ $survey_status = ['投票中', '已截止', '關閉中'];
                 <td><?= $data['id']; ?></td>
                 <td><?= $data['title']; ?></td>
                 <td><?= $survey_status[$data['status']]; ?></td>
-                <td><?php if ($data['status'] != "1") echo "<a href='./index.php?do=survey_manage&id={$data['id']}'>修改</a>" ?></td>
+                <td>
+                    <?php 
+                        if ($data['status'] == "1"){
+                            echo "已截止";
+                        } else{
+                            echo "<a href='./index.php?do=survey_manage&id={$data['id']}'>";
+                            echo ($data['status'] == "0") ? '關閉':'開啟';
+                            echo"</a>"; 
+                        }
+                           
+                    ?>
+                </td>
             </tr>
 
         <?php } ?>

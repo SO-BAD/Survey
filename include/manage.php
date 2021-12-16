@@ -13,17 +13,16 @@
             $d_id_res = $pdo->query($d_id_sql)->fetch();
             if (!$d_id_res) {
                 echo "<script>alert('無此廣告');window.location.href='./index.php';</script>";
-            }else{
-                if(file_exists($d_id_res['src'])){
+            } else {
+                if (file_exists($d_id_res['src'])) {
                     $delete_sql = "DELETE FROM `ad` WHERE `id` = '{$_GET['d_id']}'";
                     $pdo->exec($delete_sql);
                     unlink($d_id_res['src']);
                     echo "<script>alert('已刪除');window.location.href='./index.php?do=manage';</script>";
-                }else{
+                } else {
                     echo "<script>alert('檔案不存在');window.location.href='./index.php?do=manage';</script>";
                 }
             }
-
         }
         if (isset($_GET['id'])) {
             $id_sql = "SELECT * FROM `ad` WHERE `id` = '{$_GET['id']}'";
@@ -58,11 +57,17 @@
                         echo ($data['status'] == "0") ? "上架中" : "未上架";
                         echo "</a></div>";
                         ?>
-                        <div class='status btn-light' style='color:blue;'onclick= "delete_ck(<?= $data['id']; ?>)">
+                        <div class='status btn-light' style='color:blue;' onclick="delete_ck(<?= $data['id']; ?>)">
                             刪除
                         </div>
                     </div>
-
+                    <?php if($data['status'] == "0"){?> 
+                    <div>
+                        order:
+                        <input type="number" min="0" name="" id="order<?= $data['id'] ?>" value="<?= $data['orderNum']; ?>" style="width:100px">
+                        <button class="intro_btn" onclick="edit_order(<?= $data['id'] ?>)">修改</button>
+                    </div>
+                    <?php }?>
                 </div>
             </div>
 
@@ -70,8 +75,7 @@
             $i++;
         }
     } else {
-        header("location:./index.php");
-        exit;
+        echo "<script>window.location.href = './index.php'</script>";
     }
     ?>
 
@@ -131,8 +135,8 @@
         var yes = confirm('確定刪除嗎？');
         if (yes) {
             var again = confirm('再次確定刪除嗎？');
-            if(again){
-                window.location.href = "./index.php?do=manage&d_id="+d_id;
+            if (again) {
+                window.location.href = "./index.php?do=manage&d_id=" + d_id;
             }
         }
     }
@@ -146,6 +150,21 @@
             alert(res);
             window.location.href = "./index.php?do=manage";
         })
+    }
+
+    function edit_order(id) {
+        let order = document.getElementById(("order" + id)).value;
+        if (parseInt(order) >= 0 && parseInt(order) <= 100) {
+            $.post("./api/edit_add.php", {
+                order: parseInt(order),
+                id: id
+            }, function(res) {
+                alert(res);
+                window.location.href = "./index.php?do=manage";
+            })
+        }else{
+            alert("請輸入0~100的整數");
+        }
     }
 </script>
 <link rel="stylesheet" href="./css/manage.css">
