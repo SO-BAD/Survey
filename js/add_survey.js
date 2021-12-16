@@ -2,13 +2,14 @@ function del(nu) {
     document.getElementById(nu).remove();
     if (nu == "q1"){
         q_ct--;
+        opt_ct[1]=0;
     }else{
         let q_n = nu.substr(1,1);
         opt_ct[q_n]--;
     }
 }
 var q_ct = 0;
-var opt_ct = [1];
+var opt_ct = [1,0];
 function add_o(num) {
     if (opt_ct[num] < 5) {
         opt_ct[num]++;
@@ -29,7 +30,6 @@ function add_o(num) {
 function add_q() {
     if (q_ct < 1) {
         q_ct++;
-        opt_ct.push(0);
 
         let c = document.getElementsByClassName("ques")[0].cloneNode(true);
         c.setAttribute("id", ("q" + q_ct));

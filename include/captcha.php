@@ -1,7 +1,7 @@
 <?php
-// 97,122   /a-z/
 // 48, 57   /0-9/
 // 65,90    /A-Z/
+// 97,122   /a-z/
 //chr($int);  =>str
 //ord($str);  =>int
 
@@ -17,13 +17,21 @@ for ($i = 0; $i < $len; $i++) {
     $type = rand(1, 3);
     switch ($type) {
         case 1:
-            $font_arr[] = chr(rand(48, 57));
+            $font_arr[] = chr(rand(50, 57));
             break;
         case 2:
-            $font_arr[] = chr(rand(65, 90));
+            $x="O";
+            while($x=="O"||$x=="J"||$x=="I"||$x=="X"||$x=="V"||$x=="S"||$x=="P"||$x=="C"||$x=="K"||$x=="W"){
+                $x =chr(rand(65, 89));
+            };
+            $font_arr[] = $x;
             break;
         case 3:
-            $font_arr[] = chr(rand(97, 122));
+            $x="o";
+            while($x=="o"||$x=="j"||$x=="i"||$x=="x"||$x=="v"||$x=="s"||$x=="p"||$x=="q"||$x=="g"||$x=="c"||$x=="k"||$x=="l"||$x=="w"){
+                $x =chr(rand(97, 121));
+            };
+            $font_arr[] = $x;
             break;
     }
 }
@@ -39,13 +47,12 @@ echo "<div id ='a' style='display:none;'>".$str."</div>";
 
 function fonttoimg($font,$font_size, $deg , $key)
 {
-    // $dir= dirname(realpath(__DIR__));
-    // $sep=DIRECTORY_SEPARATOR;   
-    // $fontname =$dir.$sep.'arial.ttf';
+    $dir= dirname(realpath(__DIR__));
+    $sep="/font";   
+    $fontname =$dir.$sep."/".'arial.ttf';
 
-
-    // $fontBox = imagettfbbox($font_size, $deg, $fontname, $font);
-    $fontBox = imagettfbbox($font_size, $deg, 'E:\web\file\font\arial.ttf', $font);
+    $fontBox = imagettfbbox($font_size, $deg, $fontname, $font);
+    // $fontBox = imagettfbbox($font_size, $deg, 'E:\web\file\font\arial.ttf', $font);
     // $fontBox = imagettfbbox($font_size, $deg, '/home/s1100404/survey/include/arial.ttf', $font);
     // $fontBox = imagettfbbox($font_size, $deg, 'D:\web\Survey\font\arial.ttf', $font);
     //                    (  ,  ,            絕對路徑          , string )
@@ -61,8 +68,8 @@ function fonttoimg($font,$font_size, $deg , $key)
 
     // $res = imagettftext($dstimg, $font_size, $deg, (0 - $small_x), (0 - $small_y), $black, '/home/s1100404/survey/include/arial.ttf', $font);
     // $res = imagettftext($dstimg, $font_size, $deg, (0 - $small_x), (0 - $small_y), $black, 'arial.ttf', $font);
-    // $res = imagettftext($dstimg, $font_size, $deg, (0 - $small_x), (0 - $small_y), $black, $fontname, $font);
-    $res = imagettftext($dstimg, $font_size, $deg, (0 - $small_x), (0 - $small_y), $black, 'E:\web\file\font\arial.ttf', $font);
+    $res = imagettftext($dstimg, $font_size, $deg, (0 - $small_x), (0 - $small_y), $black, $fontname, $font);
+    // $res = imagettftext($dstimg, $font_size, $deg, (0 - $small_x), (0 - $small_y), $black, 'E:\web\file\font\arial.ttf', $font);
     // // $res = imagettftext($dstimg, $font_size, $deg, (0 - $small_x), (0 - $small_y), $black, $font_src, $font);
     // // $res = imagettftext($dstimg, $font_size, $deg, (0 - $small_x), (0 - $small_y), $black, 'D:\web\Survey\font\arial.ttf', $font);
 

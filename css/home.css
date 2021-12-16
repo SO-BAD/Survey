@@ -55,7 +55,6 @@ nav{
 }
 .page{
     width: 1000px;
-    min-height:800px;
     margin: 10px auto 0px auto;
     display: flex;
     justify-content: flex-end;
@@ -63,6 +62,7 @@ nav{
 
 .content{
     width: 700px;
+    min-height:800px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     background-color: white;

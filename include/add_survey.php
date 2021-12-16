@@ -31,7 +31,7 @@
                 <input type="button" value="新增問題" class='btn btn-info' onclick="add_q(),reset_submit()">
             </div>
         </div>
-        <div class="row d-flex justify-content-center mt-5">
+        <div class="row d-flex justify-content-center mt-3">
             <input type="button" id = "submit"value="建立" class='btn btn-primary' onclick="empty_ck()">
             <a href="./index.php" class='btn btn-primary ml-3'>取消</a>
         </div>

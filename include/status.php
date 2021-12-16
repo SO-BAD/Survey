@@ -79,6 +79,13 @@ if (isset($_SESSION['account'])) {
         padding-top: 10px;
     }
 
+    .user_box{
+        text-align:right;
+        padding-right: 10px;
+        line-height: 40px;
+    }
+
+
     .button_box {
         width: 60px;
         height: 60px;
