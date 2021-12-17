@@ -14,7 +14,7 @@ $res = $show_storys->all();
     </div>
     <div class="storys_box d-flex flex-column">
         <?php foreach ($res as $key => $value) { ?>
-            <div style="display:flex; padding:5px 10px;">
+            <div style="width: 49%;margin-right:1%; display:flex; padding:5px 10px; border: 1px solid black;">
                 <img src="<?=$res[0]['src']?>" style="width:120px;" alt="">
                 <div style="width:120px; display:flex; " class="flex-column">
                     <div><?=$res[0]['title']?></div>
@@ -27,7 +27,5 @@ $res = $show_storys->all();
 <style>
     .storys_box {
         width: 100%;
-        height: 80px;
-        border: 1px solid black;
     }
 </style>

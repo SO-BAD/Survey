@@ -15,4 +15,5 @@
     $res = select("accounts",$acc,"account",$_POST['account'][0]);
     $_SESSION['account']=['id'=>$res[0]['id'],'name'=>$res[0]['name']];
     header("location:../index.php");
+
 ?>
