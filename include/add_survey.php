@@ -9,17 +9,17 @@
     </div>
 <form action="./api/survey_insert.php" method="POST" class="form" id= "myform">
     <div class="top">
-        <input type="text" placeholder="請輸入問卷主題" onkeyup="ck(this)" name ="s[]"><i class='fas fa-exclamation-triangle empty'></i>
+        <input type="text" placeholder="請輸入問卷主題"  onkeyup="ck(this)" name ="s[]"><i class='fas fa-exclamation-triangle empty'></i>
         <span style="margin-left:20px;">截止日期:</span> <input  name ="s[]" type="date" onchange="compare(this),ck(this);"><i class='fas fa-exclamation-triangle empty'></i>
     </div>
     <div class="add_page">
         <div class="ques">
             <div class="q_t">
-                <input type="text" class="q_t_i" name="q[0][]" placeholder="請輸入問題" onkeyup="ck(this)"><i class='fas fa-exclamation-triangle empty'></i>
+                <input type="text" class="q_t_i" name="q[0][]" placeholder="請輸入問題" onkeyup="ck(this)" ><i class='fas fa-exclamation-triangle empty'></i>
             </div>
             <div class="o_box">
                 <div id = "o0-1" class="o">
-                    <i class="far fa-circle"></i><input type="text" class="opt" name="q[0][]"placeholder="請輸入選項" onkeyup="ck(this)"><i class='fas fa-exclamation-triangle empty'></i>
+                    <i class="far fa-circle"></i><input type="text" class="opt0" name="q[0][]"placeholder="請輸入選項" onkeyup="ck(this)"><i class='fas fa-exclamation-triangle empty'></i>
                 </div>
             </div>
             <i class="fas fa-plus" onclick="add_o(0),reset_submit()" style="cursor: pointer; margin-left:40px; ">&ensp;新增選項</i>

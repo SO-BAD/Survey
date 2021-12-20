@@ -1,22 +1,22 @@
 function del(nu) {
     document.getElementById(nu).remove();
-    if (nu == "q1"){
+    if (nu == "q1") {
         q_ct--;
-        opt_ct[1]=0;
-    }else{
-        let q_n = nu.substr(1,1);
+        opt_ct[1] = 0;
+    } else {
+        let q_n = nu.substr(1, 1);
         opt_ct[q_n]--;
     }
 }
 var q_ct = 0;
-var opt_ct = [1,0];
+var opt_ct = [1, 0];
 function add_o(num) {
     if (opt_ct[num] < 5) {
         opt_ct[num]++;
         let f = document.getElementsByClassName("o_box")[num];
         let str = 'o' + num + '-' + opt_ct[num];
         let str1 = "<div id = '" + str + "'  class='o'>";
-        let str2 = "<i class='far fa-circle'></i><input type='text' class='opt' name='q[" + num + "][]' placeholder='請輸入選項' onkeyup="+'"'+"ck(this)"+'"'+"'>";
+        let str2 = "<i class='far fa-circle'></i><input type='text' class='opt"+num+"' name='q[" + num + "][]' placeholder='請輸入選項' onkeyup=" + '"' + "ck(this)" + '"' + "'>";
         let str3 = "<i id = 'o" + num + "-" + opt_ct[num] + "a' class='fas fa-exclamation-triangle empty'></i><i class='fas fa-times'";
         let str4 = 'onclick ="' + "del('" + str + "')" + '"' + "'></i>";
         let d = document.createElement("div");
@@ -40,7 +40,7 @@ function add_q() {
         c.getElementsByClassName("q_t")[0].appendChild(x);
 
         c.getElementsByClassName("q_t_i")[0].setAttribute("name", ("q[" + q_ct + "][]"));
-        c.getElementsByClassName("q_t_i")[0].value="";
+        c.getElementsByClassName("q_t_i")[0].value = "";
         c.getElementsByClassName("fa-plus")[0].setAttribute("onclick", ("add_o(" + q_ct + "),reset_submit()"));
         let o = c.getElementsByClassName("o_box")[0];
         while (o.firstChild) {
@@ -54,42 +54,29 @@ function add_q() {
 }
 var myForm = document.getElementById("myform");
 function empty_ck() {
-    let ct =0;
+    let ct = 0;
     let input = myForm.getElementsByTagName("input");
     let empty = myForm.getElementsByClassName("empty");
-    for (let i = 0; i < input.length; i++) {
+    for (let i = 0; i < empty.length; i++) {
         if (input[i].value == "") {
-            empty[i].style.opacity = 1;
+            empty[i].style.opacity = "1";
         } else {
-            empty[i].style.opacity = 0;
+            empty[i].style.opacity = "0";
             ct++;
         }
     }
-    if(ct == input.length){
-        document.getElementById("submit").type ="submit"; 
-        document.getElementById("submit").click(); 
-    }
-}
-var timeN = new Date();
-function compare(obj) {
-    var n = new Date();
-    var oDate = n.getFullYear()+"-"+(n.getMonth()+1)+"-"+n.getDate();
-    oDate1 = new Date(oDate);
-    if (obj.value) {
-        var oDate2 = new Date(obj.value);
-        if (oDate2.getTime() < oDate1.getTime()) {
-            alert("請輸入大於今天日期");
-            obj.value="";
-        } 
+    if (ct == input.length) {
+        document.getElementById("submit").type = "submit";
+        document.getElementById("submit").click();
     }
 }
 
-function ck(obj){
-    let ct =0;
+function ck(obj) {
+    let ct = 0;
     let input = myForm.getElementsByTagName("input");
     let empty = myForm.getElementsByClassName("empty");
     for (let i = 0; i < input.length; i++) {
-        if (obj == input[i] &&obj.value!="") {
+        if (obj == input[i] && obj.value != "") {
             empty[i].style.opacity = 0;
         }
         if (input[i].value != "") {
@@ -99,6 +86,26 @@ function ck(obj){
     document.getElementById("submit").type =(ct == input.length)?"submit":"button"; 
 }
 
-function reset_submit(){
-    document.getElementById("submit").type ="button"; 
+function reset_submit() {
+    document.getElementById("submit").type = "button";
 }
+
+
+
+var timeN = new Date();
+function compare(obj) {
+    var n = new Date();
+    var oDate = n.getFullYear() + "-" + (n.getMonth() + 1) + "-" + n.getDate();
+    oDate1 = new Date(oDate);
+    if (obj.value) {
+        var oDate2 = new Date(obj.value);
+        if (oDate2.getTime() < oDate1.getTime()) {
+            alert("請輸入大於今天日期");
+            obj.value = "";
+        }
+    }
+}
+
+
+
+
