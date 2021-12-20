@@ -65,11 +65,28 @@ function empty_ck() {
             ct++;
         }
     }
+
+    alert("s");
     if (ct == input.length) {
         document.getElementById("submit").type = "submit";
         document.getElementById("submit").click();
     }
 }
+
+
+
+function num_lower(){
+    console.log(q_ct);
+    for(let i =0;i<(q_ct+1);i++){
+        // let opt = document.getElementsByClassName("opt"+q_ct);
+        if(opt_ct[i] <2){
+            alert("第"+(q_ct+1)+"題選項少於2");
+        }
+    }
+}
+
+
+
 
 function ck(obj) {
     let ct = 0;
