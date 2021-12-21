@@ -10,10 +10,10 @@ if (isset($_GET['id'])) {
     $id_res = $pdo->query($id_sql)->fetch();
 
     if (!$id_res) {
-        echo "<script>alert('無此廣告');window.location.href='./index.php';</script>";
+        echo "<script>alert('無此問卷');window.location.href='./index.php';</script>";
     }
 
-    $change_status = ($id_res['status'] + 2) % 4;
+    $change_status = ($id_res['status'] + 1) % 2;
     $update = "UPDATE `surveys` SET `status` = '{$change_status}' WHERE `id` = '{$_GET['id']}'";
     $pdo->exec($update);
     echo "<script>window.location.href='./index.php?do=survey_manage';</script>";
@@ -24,7 +24,7 @@ if (isset($_GET['id'])) {
 
 $sql = "SELECT * FROM `surveys` ORDER BY `id` DESC";
 $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-$survey_status = ['投票中', '已截止', '關閉中'];
+$survey_status = ['投票中','關閉中','已截止'];
 
 ?>
 
@@ -46,7 +46,7 @@ $survey_status = ['投票中', '已截止', '關閉中'];
                 <td><?= $survey_status[$data['status']]; ?></td>
                 <td>
                     <?php 
-                        if ($data['status'] == "1"){
+                        if ($data['status'] == "2"){
                             echo "已截止";
                         } else{
                             echo "<a href='./index.php?do=survey_manage&id={$data['id']}'>";

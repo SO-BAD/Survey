@@ -82,7 +82,7 @@ if (isset($_GET['orderby_type']) && $_GET['orderby_type'] > -1 && $_GET['orderby
     $sql = "SELECT * FROM `surveys` ".$search_sql." ORDER BY `id` DESC". $sql_LIMIT;;
 }
 $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-
+$search_input= $_GET['search']??"";  
 
 
 
@@ -97,7 +97,7 @@ $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         <div class="row">
             <div class="col-12 d-flex justify-content-end">
                 <form action="" class="mr-5">
-                    <input type="text" name="search" id="">
+                    <input type="text" name="search" id="" value="<?=  $search_input;?>">
                     <button><i class="fas fa-search"></i></button>
                 </form>
                 <a href="./index.php?do=add_survey"><i class="fas fa-plus"></i>&nbsp;NEW</a>
@@ -117,6 +117,7 @@ $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
                 <a href="./index.php?orderby_type=2<?= $orderType_link[2]; ?>">填寫數<i class="<?= $orderType_arrow[2]; ?> ml-1"></i></a>
             </th>
             <th>結果</th>
+            <th>提問人</th>
         </tr>
         <?php foreach ($res as $data) { ?>
             <tr>
@@ -148,11 +149,12 @@ $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
                 </td>
 
                 <td><?= $data['count'] ?></td>
-                <td><?php echo $res_box; ?></td>
+                <td><?= $res_box; ?></td>
+                <td><?= $data['author'] ?></td>
             </tr>
         <?php } ?>
     </table>
-    <div class="container-fluid">
+    <div class="container-fluid mt-3">
         <div class="row d-flex justify-content-end">
             <div class="col-3">
                 <?php 

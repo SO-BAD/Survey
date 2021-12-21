@@ -1,7 +1,6 @@
 <?php
 include_once "./api/db_story.php";
 $show_storys = new DB("storys");
-
 $res = $show_storys->all();
 ?>
 
@@ -10,7 +9,6 @@ $res = $show_storys->all();
 
 <div style="width:100%;" class="d-flex flex-column p-5">
     <div style="width:100%;">
-
     </div>
     <div class="storys_box d-flex flex-column">
         <?php foreach ($res as $key => $value) { ?>

@@ -83,6 +83,10 @@ if (isset($_SESSION['account'])) {
         }
     </style>
     <script>
+        $(document).keypress(function(e) {
+            if (event.keyCode == '13') input_ck();
+        });
+
         function section_mt() {
             let h = window.innerHeight;
             document.getElementsByClassName('section')[0].style.marginTop = (h > 500) ? ((h - 500) / 2 + "px") : "0";
@@ -100,14 +104,14 @@ if (isset($_SESSION['account'])) {
                     ct++;
                 }
             }
-            if (ct == 3){
-                if(document.getElementById('a').innerText != document.getElementsByTagName('input')[2].value){
+            if (ct == 3) {
+                if (document.getElementById('a').innerText != document.getElementsByTagName('input')[2].value) {
                     alert("驗證碼錯誤");
                     window.location.href = './login.php';
-                }else{
+                } else {
                     acc_ck();
                 }
-            } 
+            }
         }
 
         function acc_ck() {
@@ -148,8 +152,8 @@ if (isset($_SESSION['account'])) {
                     <input type="text" style="width:120px;">
                     <i class='fas fa-exclamation-triangle empty'></i>
                 </div>
-                <div style ="margin-left:30px">
-                    <?php include_once "./include/captcha.php";?>
+                <div style="margin-left:30px">
+                    <?php include_once "./include/captcha.php"; ?>
                 </div>
             </div>
 

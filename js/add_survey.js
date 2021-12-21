@@ -16,7 +16,7 @@ function add_o(num) {
         let f = document.getElementsByClassName("o_box")[num];
         let str = 'o' + num + '-' + opt_ct[num];
         let str1 = "<div id = '" + str + "'  class='o'>";
-        let str2 = "<i class='far fa-circle'></i><input type='text' class='opt"+num+"' name='q[" + num + "][]' placeholder='請輸入選項' onkeyup=" + '"' + "ck(this)" + '"' + "'>";
+        let str2 = "<i class='far fa-circle'></i><input type='text' class='opt" + num + "' name='q[" + num + "][]' placeholder='請輸入選項' onkeyup=" + '"' + "ck(this)" + '"' + "'>";
         let str3 = "<i id = 'o" + num + "-" + opt_ct[num] + "a' class='fas fa-exclamation-triangle empty'></i><i class='fas fa-times'";
         let str4 = 'onclick ="' + "del('" + str + "')" + '"' + "'></i>";
         let d = document.createElement("div");
@@ -55,6 +55,8 @@ function add_q() {
 var myForm = document.getElementById("myform");
 function empty_ck() {
     let ct = 0;
+    let nl = 0;
+    let qo = 0;
     let input = myForm.getElementsByTagName("input");
     let empty = myForm.getElementsByClassName("empty");
     for (let i = 0; i < empty.length; i++) {
@@ -65,9 +67,9 @@ function empty_ck() {
             ct++;
         }
     }
-
-    alert("s");
-    if (ct == input.length) {
+    nl = num_lower();
+    qo = qo_ReCk()
+    if (ct == input.length && nl == (q_ct + 1) && qo ==0) {
         document.getElementById("submit").type = "submit";
         document.getElementById("submit").click();
     }
@@ -75,14 +77,41 @@ function empty_ck() {
 
 
 
-function num_lower(){
-    console.log(q_ct);
-    for(let i =0;i<(q_ct+1);i++){
+function num_lower() {
+    let ct = 0;
+    for (let i = 0; i < (q_ct + 1); i++) {
         // let opt = document.getElementsByClassName("opt"+q_ct);
-        if(opt_ct[i] <2){
-            alert("第"+(q_ct+1)+"題選項少於2");
+        if (opt_ct[i] < 2) {
+            alert("第" + (i + 1) + "題選項少於2個");
+        } else {
+            ct++;
         }
     }
+    return ct;
+}
+function qo_ReCk() {
+    let ct = 0;
+    let q_t_i = document.getElementsByClassName("q_t_i");
+    if(q_ct == "1"){
+        if(q_t_i[0].value == q_t_i[1].value) alert("第1.2題問題重複");
+        ct++;
+    }
+    for (let o = 0; o < (q_ct + 1); o++) {
+        let opt1 = document.getElementsByClassName("opt" + o);
+        // console.log(opt1.length)
+        for (let i = 0; i < (opt1.length - 1); i++) {
+            // console.log(i);
+            for (let j = 0; j < (opt1.length - 1 - i); j++) {
+                // console.log(j);
+                if (opt1[(opt1.length - 1 - i)].value == opt1[j].value && opt1[(opt1.length - 1 - i)].value != "") {
+                    alert("第" + (o + 1) + "題有選項重複");
+                    ct++;
+                }
+            }
+
+        }
+    }
+    return ct ;
 }
 
 
@@ -97,10 +126,10 @@ function ck(obj) {
             empty[i].style.opacity = 0;
         }
         if (input[i].value != "") {
-            ct ++;
-        }  
+            ct++;
+        }
     }
-    document.getElementById("submit").type =(ct == input.length)?"submit":"button"; 
+    document.getElementById("submit").type = (ct == input.length) ? "submit" : "button";
 }
 
 function reset_submit() {

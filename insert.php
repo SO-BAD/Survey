@@ -74,7 +74,7 @@
 
         .input {
             width: 180px;
-            height: 20px;
+            height: 30px;
         }
 
         .empty {
@@ -108,13 +108,14 @@
         function insert_ck() {
             let sum = 0;
             let input = document.getElementsByTagName("input");
+            let x = acc_ck();
             for (let [key, data] of Object.entries(input)) {
                 ck(data);
             }
             for (let value of Object.entries(st)) {
                 sum = sum + value[1];
             }
-            if (sum == 4) {
+            if (sum == 4 && x ==0) {
                 document.getElementById('submit').type = 'submit';
                 document.getElementById('submit').click();
             }
@@ -177,6 +178,17 @@
                 st[obj.id] = 0;
             }
         }
+        function acc_ck(){
+            let acc = document.getElementById("account").value;
+            let re = /^[0-9A-Za-z]/;
+            for(let i =0;i<acc.length;i++){
+                if(!re.test(acc[i])){
+                    // document.getElementById("account").value = acc.substr(0,(i-1));
+                    alert("帳號僅輸入大小英文及數字");
+                    break;
+                }
+            }
+        }
     </script>
 </head>
 
@@ -187,7 +199,7 @@
             <div class="data_box">
                 <label class="label" for="account">Account</label>
                 <div class="input_box">
-                    <input type="text" id="account" class="input" name="account[]" onkeyup="re_ck(this)">
+                    <input type="text" id="account" class="input" name="account[]" onkeyup="re_ck(this),acc_ck()">
                     <i id="account_i" class='fas fa-exclamation-triangle empty'></i>
                     <span id="account_alert"></span>
                 </div>
@@ -228,7 +240,7 @@
             <div class="data_box">
                 <label class="label" for="live">live</label>
                 <div class="input_box">
-                    <select name="account[]" id="live" style="height:20px; margin-top:20px;">
+                    <select name="account[]" id="live" style="height:30px; margin-top:20px;">
                         <option value="A">臺北市</option>
                         <option value="B">臺中市</option>
                         <option value="C">基隆市</option>
