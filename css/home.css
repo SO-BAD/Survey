@@ -55,22 +55,22 @@ nav{
 }
 .page{
     width: 1000px;
-    margin: 10px auto 0px auto;
+    margin: 40px auto 0px auto;
     display: flex;
     justify-content: flex-end;
+    align-items: flex-start;
 }
 
 .content{
     width: 700px;
-    min-height:800px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    min-height:730px;
+    border-radius: 20px;
     background-color: white;
 }
 .aside{
     width: 200px;
     min-height:500px;
-    padding: 10px;
+    padding-left: 10px;
     display: flex;
     flex-direction: column;
 }
@@ -80,6 +80,7 @@ footer{
     height: 70px;
     text-align: center;
     color:white;
+    margin-top: 70px;
     background-color: #5d5d5d;
 }
 .display_box{

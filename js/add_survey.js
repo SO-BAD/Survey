@@ -92,7 +92,7 @@ function num_lower() {
 function qo_ReCk() {
     let ct = 0;
     let q_t_i = document.getElementsByClassName("q_t_i");
-    if(q_ct == "1"){
+    if(q_ct == "1" && q_t_i[0].value != ""){
         if(q_t_i[0].value == q_t_i[1].value) alert("第1.2題問題重複");
         ct++;
     }

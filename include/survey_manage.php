@@ -38,9 +38,14 @@ $survey_status = ['投票中','關閉中','已截止'];
             <td>狀態管理</td>
         </tr>
         <?php
-        foreach ($res as $key => $data) {   ?>
+        foreach ($res as $key => $data) {   
+            // $bg = ($data['status'] != "0")?"style='background:#f0f0f0;'":"";
+            $bg = ($data['status'] != "0")?"class='noopen'":"";
+            echo "<tr ".$bg.">";
+            
+            
+            ?>
 
-            <tr>
                 <td><?= $data['id']; ?></td>
                 <td><?= $data['title']; ?></td>
                 <td><?= $survey_status[$data['status']]; ?></td>
@@ -71,5 +76,8 @@ $survey_status = ['投票中','關閉中','已截止'];
     }
     tr:hover{
         background-color:lightblue;
+    }
+    .noopen{
+        background: #f1f1f1;
     }
 </style>

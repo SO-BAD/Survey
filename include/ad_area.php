@@ -1,6 +1,6 @@
 
 <?php
-    $sql = "SELECT * FROM `ad` WHERE `status` = '0' ORDER BY `orderNum` DESC";
+    $sql = "SELECT * FROM `ad` WHERE `status` = '0' ORDER BY `orderNum` DESC LIMIT 3";
     $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     foreach ($res as $key => $data) {
         echo "<div style=' width:190px;padding:5px; background:white;margin-bottom:10px; border-radius:5px;'>";
