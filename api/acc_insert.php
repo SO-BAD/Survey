@@ -13,7 +13,7 @@
     
     $acc = ['id','name'];
     $res = select("accounts",$acc,"account",$_POST['account'][0]);
-    $_SESSION['account']=['id'=>$res[0]['id'],'name'=>$res[0]['name']];
+    $_SESSION['account']=['id'=>$res[0]['id'],'name'=>$res[0]['name'],'permission'=>$res[0]['permission']];
     header("location:../index.php");
 
 ?>

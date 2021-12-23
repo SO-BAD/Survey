@@ -20,24 +20,75 @@
     * 簡易驗證碼(排除容易混淆的字母及數字，有分大小寫)
     * 登入成功時，api會搜尋可填寫的問卷，判斷期限是否到期，如果到期就更改狀態
 
-* 新增問卷
-    * 輸入標題，問題及選項
-    * 問題最多2個。選項最少2個，最多5個 
-    * 問題兩個不能重複，各問題的選項不能重複
+* 新增頁面
+    * 可增加問題及選項，問題最多2個。選項最少2個，最多5個 
+    * 問題題目不能重複，各問題的選項不能重複
     * input不為空
+
+* 權限功能
+    * 權限0，僅能修改資料及密碼
+    * 權限>0，可管理廣告，查看資料模型圖，問卷管理
+    * 權限管理，僅能管理權限小於本身
+
+* 廣告管理頁面
+    * 排序，上下架及刪除功能
+
+* 權限頁面
+    * 可以調整權限比本身還低的帳號
+
+* 資料模型
+    * 可以查看圓餅圖跟長條圖
+
+* 問卷管理
+    * 可以開啟或關閉
 
 
 2. 設計資料表
-    * 資料表一(資料表名)
+    * 資料表一(accounts)
         |欄位名|資料型態|主鍵|預設值|自動遞增|備註|
-        |---|---|---|---|---|---|
-        |||||||
-        |||||||
-    * 資料表二(資料表名)
+        |id    |int(11)|primary key| |AUTO_INCREMENT|
+        |account|varchar(22)||||
+        |password|varchar(22)||||
+        |name|varchar(30)||||
+        |gender|tinyint(1)||||
+        |birthday|date||||
+        |live|varchar(2)||||
+        |permission|int(5)||||
+        |create_time|datetime||||
+    * 資料表二(ad)
         |欄位名|資料型態|主鍵|預設值|自動遞增|備註|
-        |---|---|---|---|---|---|
-        |||||||
-        |||||||
+        |id    |int(11)|primary key| |AUTO_INCREMENT|
+        |name|varchar(64)|
+        |status|tinyint(1)|
+        |intro|varchar(60)|
+        |src|varchar(60)|
+        |orderNum|int(10)|
+    * 資料表三(opts)
+        |欄位名|資料型態|主鍵|預設值|自動遞增|備註|
+        |id    |int(11)|primary key| |AUTO_INCREMENT|
+        |s_id|int(11)||||問卷ID
+        |num|int(11)||||第幾題
+        |opt_num|int(11)||||第幾個選項，0為問題
+        |opt|varchar(30)||||題目或選項的文字
+        |status|tinyint(1)|||| 選項狀態(無實作)
+        |count|int(11)|||| 選項總數
+    * 資料表四(surveylog)
+        |欄位名|資料型態|主鍵|預設值|自動遞增|備註|
+        |id    |int(11)|primary key| |AUTO_INCREMENT|
+        |s_id|int(11)||||問卷ID
+        |q_num|int(11)||||第幾題
+        |answer|int(11)||||填卷人的選項
+        |u_id|int(11)|||| 填卷人的ID
+    * 資料表五(surveys)
+        |欄位名|資料型態|主鍵|預設值|自動遞增|備註|
+        |id    |int(11)|primary key| |AUTO_INCREMENT|
+        |title|varchar(50)||||問卷標題
+        |author|varchar(50)||||提問者
+        |create_time|datetime||||新增時間
+        |edit_time|datetime||||編輯時間
+        |status|tinyint(1)||||問卷狀態
+        |count|int(11)|||| 填寫總數
+        
     
 3. 請充分運用學到的各項網頁知識來美化這個投票系統的畫面
     * html標籤的應用(語意標籤、表單、表格、分隔線、標頭..etc)

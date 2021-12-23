@@ -108,14 +108,14 @@
         function insert_ck() {
             let sum = 0;
             let input = document.getElementsByTagName("input");
-            let x = acc_ck();
+            acc_ck();
             for (let [key, data] of Object.entries(input)) {
                 ck(data);
             }
             for (let value of Object.entries(st)) {
                 sum = sum + value[1];
             }
-            if (sum == 4 && x ==0) {
+            if (sum == 4 ) {
                 document.getElementById('submit').type = 'submit';
                 document.getElementById('submit').click();
             }
@@ -183,11 +183,12 @@
             let re = /^[0-9A-Za-z]/;
             for(let i =0;i<acc.length;i++){
                 if(!re.test(acc[i])){
-                    // document.getElementById("account").value = acc.substr(0,(i-1));
+                    document.getElementById("account").value = acc.substr(0,(i-1));
                     alert("帳號僅輸入大小英文及數字");
                     break;
                 }
             }
+           
         }
     </script>
 </head>

@@ -91,3 +91,7 @@ td:nth-child(4){
 tr:NOT(:nth-child(1)):hover {
     background-color: #e8f4ff;
 }
+
+.col-2:hover a,.col-3 a:hover{
+    color:red;
+}

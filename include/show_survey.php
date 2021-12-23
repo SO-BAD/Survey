@@ -4,13 +4,8 @@ $orderType_link = ['', '', ''];
 $orderType_arrow = ['', '', ''];
 $arrow = ['fas fa-arrow-up', 'fas fa-arrow-down'];
 $search_sql = '';
-$page_num = 15;
-if (isset($_GET['page']) && is_numeric($_GET['page'])) {
-    $page = $_GET['page'];
-} else {
-    $page = 1;
-}
-
+$page_num = 3;
+$page = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1;
 
 
 if (isset($_GET['search'])) {
@@ -104,56 +99,56 @@ $search_input = $_GET['search'] ?? "";
         </div>
     </div>
     <div style="height: 550px;">
-    <table >
-        <tr>
-            <th class="th <?= $orderType_active[0]; ?>">
-                <a href="./index.php?orderby_type=0<?= $orderType_link[0]; ?>">期限<i class="<?= $orderType_arrow[0]; ?> ml-1"></i></a>
-            </th>
-            <th>主題</th>
-            <th class="th <?= $orderType_active[1]; ?>">
-                <a href="./index.php?orderby_type=1<?= $orderType_link[1]; ?>">狀態<i class="<?= $orderType_arrow[1]; ?> ml-1"></i></a>
-            </th>
-            <th class="th <?= $orderType_active[2]; ?>">
-                <a href="./index.php?orderby_type=2<?= $orderType_link[2]; ?>">填寫數<i class="<?= $orderType_arrow[2]; ?> ml-1"></i></a>
-            </th>
-            <th>結果</th>
-            <th>提問者</th>
-        </tr>
-        <?php foreach ($res as $data) { ?>
+        <table>
             <tr>
-                <td><?= $data['end_time'] ?></td>
-                <td><?= $data['title'] ?></td>
-                <td>
-                    <?php
-                    if (isset($_SESSION['account'])) {
-                        if ($data['status'] == 0) {
-                            $sql = "SELECT `id` FROM `surveylog` WHERE `u_id` ='{$_SESSION['account']['id']}'AND `s_id`= '{$data['id']}'";
-                            $ck_res = $pdo->query($sql)->fetchColumn();
-                            if ($ck_res) {
-                                echo "<a href='./index.php?do=edit_survey&id=" . $data['id'] . "'>修改</a>";
-                            } else {
-                                echo "<a href='./index.php?do=write_survey&id=" . $data['id'] . "'>填寫</a>";
-                            }
-                        } else if ($data['status'] == 2) {
-                            echo "已截止";
-                        } else {
-                            echo "關閉中";
-                        }
-                        $res_box = "<a href='./index.php?do=res_survey&id=" . $data['id'] . "'>查看</a>";
-                    } else {
-                        echo "<a href='./login.php'>填寫</a>";
-                        $res_box = "<a href='./login.php'>查看</a>";
-                    }
-
-                    ?>
-                </td>
-
-                <td><?= $data['count'] ?></td>
-                <td><?= $res_box; ?></td>
-                <td><?= $data['author'] ?></td>
+                <th class="th <?= $orderType_active[0]; ?>">
+                    <a href="./index.php?orderby_type=0<?= $orderType_link[0]; ?>">期限<i class="<?= $orderType_arrow[0]; ?> ml-1"></i></a>
+                </th>
+                <th>主題</th>
+                <th class="th <?= $orderType_active[1]; ?>">
+                    <a href="./index.php?orderby_type=1<?= $orderType_link[1]; ?>">狀態<i class="<?= $orderType_arrow[1]; ?> ml-1"></i></a>
+                </th>
+                <th class="th <?= $orderType_active[2]; ?>">
+                    <a href="./index.php?orderby_type=2<?= $orderType_link[2]; ?>">填寫數<i class="<?= $orderType_arrow[2]; ?> ml-1"></i></a>
+                </th>
+                <th>結果</th>
+                <th>提問者</th>
             </tr>
-        <?php } ?>
-    </table>
+            <?php foreach ($res as $data) { ?>
+                <tr>
+                    <td><?= $data['end_time'] ?></td>
+                    <td><?= $data['title'] ?></td>
+                    <td>
+                        <?php
+                        if (isset($_SESSION['account'])) {
+                            if ($data['status'] == 0) {
+                                $sql = "SELECT `id` FROM `surveylog` WHERE `u_id` ='{$_SESSION['account']['id']}'AND `s_id`= '{$data['id']}'";
+                                $ck_res = $pdo->query($sql)->fetchColumn();
+                                if ($ck_res) {
+                                    echo "<a href='./index.php?do=edit_survey&id=" . $data['id'] . "'>修改</a>";
+                                } else {
+                                    echo "<a href='./index.php?do=write_survey&id=" . $data['id'] . "'>填寫</a>";
+                                }
+                            } else if ($data['status'] == 2) {
+                                echo "已截止";
+                            } else {
+                                echo "關閉中";
+                            }
+                            $res_box = "<a href='./index.php?do=res_survey&id=" . $data['id'] . "'>查看</a>";
+                        } else {
+                            echo "<a href='./login.php'>填寫</a>";
+                            $res_box = "<a href='./login.php'>查看</a>";
+                        }
+
+                        ?>
+                    </td>
+
+                    <td><?= $data['count'] ?></td>
+                    <td><?= $res_box; ?></td>
+                    <td><?= $data['author'] ?></td>
+                </tr>
+            <?php } ?>
+        </table>
     </div>
     <div class="container-fluid mt-5">
         <div class="row d-flex justify-content-center">
@@ -171,10 +166,10 @@ $search_input = $_GET['search'] ?? "";
                     $ad_link = "";
                 }
                 if ($page > $total_page) $page = 1;
-                echo ($page > 1) ? "<a href='./index.php?page=" . ($page - 1) . "{$search_link}{$type_link}{$ad_link}'>上一頁</a>&ensp;" : "";
+                echo ($page > 1) ? "<a href='./index.php?page=" . ($page - 1) . "{$search_link}{$type_link}{$ad_link}'><i class='fas fa-angle-double-left'></i></a>&ensp;" : "";
                 ?>
             </div>
-            <div class="col-2 text-center">
+            <div class="col-3 text-center">
                 <?php
 
                 if ($total_page > 1 && $total_page <= 5) {
@@ -186,6 +181,9 @@ $search_input = $_GET['search'] ?? "";
                         }
                     }
                 } else if ($total_page > 5) {
+                    if ($page - 3 > 0) {
+                        echo "<a href='./index.php?page=1{$search_link}{$type_link}{$ad_link}'>1</a>&nbsp;...&nbsp;";
+                    }
                     if (($page - 2) > 0) {
                         for ($i = ($page - 2); $i < ($page + 3); $i++) {
                             if ($page == $i) {
@@ -205,12 +203,15 @@ $search_input = $_GET['search'] ?? "";
                             }
                         }
                     }
+                    if ($total_page - $page > 2) {
+                        echo "...&nbsp;<a href='./index.php?page={$total_page}{$search_link}{$type_link}{$ad_link}'>{$total_page}</a>";
+                    }
                 }
                 ?>
             </div>
             <div class="col-2">
                 <?php
-                echo ($page < $total_page) ? "<a href='./index.php?page=" . ($page + 1) . "{$search_link}{$type_link}{$ad_link}'>下一頁</a>&ensp;" : "";
+                echo ($page < $total_page) ? "<a href='./index.php?page=" . ($page + 1) . "{$search_link}{$type_link}{$ad_link}'><i class='fas fa-angle-double-right'></i></a>&ensp;" : "";
                 ?>
             </div>
         </div>
