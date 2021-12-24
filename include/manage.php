@@ -37,42 +37,47 @@
             $pdo->exec($update);
             echo "<script>window.location.href='./index.php?do=manage';</script>";
         }
-
-
-        $sql = "SELECT * FROM `ad` ORDER BY `id` DESC";
-        $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-        $i = 0;
-        foreach ($res as $key => $data) { ?>
-            <div class='manage_box o<?= $data['status']; ?>'>
-                <?php echo "<img class='img_box' src ='{$data['src']}' alt=''>"; ?>
-                <div class='edit_box'>
-                    <div>
-                        <input class='intro' type="text" value="<?= $data['intro']; ?>" id="input<?= $data['id'] ?>">
-                        <button class="intro_btn" onclick="edit_intro(<?= $data['id'] ?>)">修改</button>
-                    </div>
-                    <div style="display:flex; width:200px;">
-                        <?php
-                        echo "<div class='status st" . $data['status'] . "' onclick='change_status(this," . ($data['id'] - 1) . ",$i";
-                        echo ")'> <a href='./index.php?do=manage&id=" . $data['id'] . "'>";
-                        echo ($data['status'] == "0") ? "上架中" : "未上架";
-                        echo "</a></div>";
-                        ?>
-                        <div class='status btn-light' style='color:blue;' onclick="delete_ck(<?= $data['id']; ?>)">
-                            刪除
+        $col_st = ['上架中','未上架'];
+        for ($o = 1; $o >-1; $o--) {
+            $sql = "SELECT * FROM `ad` WHERE `status`='{$o}' ORDER BY `orderNum` DESC";
+            $res = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+            echo "<div class ='ad_column'><div class= 'column_header'>{$col_st[$o]}";
+            echo (($o ==0)?"(僅顯示order前3高)":"")."</div>";
+            $i = 0;
+            foreach ($res as $key => $data) { ?>
+                <div class='manage_box o<?= $data['status']; ?>'>
+                    <?php echo "<img class='img_box' src ='{$data['src']}' alt=''>"; ?>
+                    <div class='edit_box'>
+                        <div>
+                            <input class='intro' type="text" value="<?= $data['intro']; ?>" id="input<?= $data['id'] ?>">
+                            <button class="intro_btn" onclick="edit_intro(<?= $data['id'] ?>)">修改</button>
                         </div>
+                        <div style="display:flex; width:200px;">
+                            <?php
+                            echo "<div class='status st" . $data['status'] . "' onclick='change_status(this," . ($data['id'] - 1) . ",$i";
+                            echo ")'> <a href='./index.php?do=manage&id=" . $data['id'] . "'>";
+                            echo ($data['status'] == "0") ? "上架中" : "未上架";
+                            echo "</a></div>";
+                            ?>
+                            <div class='status btn-light' style='color:blue;' onclick="delete_ck(<?= $data['id']; ?>)">
+                                刪除
+                            </div>
+                        </div>
+                        <?php if ($data['status'] == "0") { ?>
+                            <div>
+                                order:
+                                <input type="number" min="0" name="" id="order<?= $data['id'] ?>" value="<?= $data['orderNum']; ?>" style="width:100px">
+                                <button class="intro_btn" onclick="edit_order(<?= $data['id'] ?>)">修改</button>
+                            </div>
+                        <?php } ?>
                     </div>
-                    <?php if($data['status'] == "0"){?> 
-                    <div>
-                        order:
-                        <input type="number" min="0" name="" id="order<?= $data['id'] ?>" value="<?= $data['orderNum']; ?>" style="width:100px">
-                        <button class="intro_btn" onclick="edit_order(<?= $data['id'] ?>)">修改</button>
-                    </div>
-                    <?php }?>
                 </div>
-            </div>
 
     <?php
-            $i++;
+                $i++;
+            }
+            
+            echo "</div>";
         }
     } else {
         echo "<script>window.location.href = './index.php'</script>";
@@ -162,7 +167,7 @@
                 alert(res);
                 window.location.href = "./index.php?do=manage";
             })
-        }else{
+        } else {
             alert("請輸入0~100的整數");
         }
     }
