@@ -65,7 +65,7 @@ if( isset($_GET['do']) && $_GET['do'] == "show_story"){
                 <a href="./index.php">問卷</a>
             </div>
             <div class="<?=$story_active_box ;?>">
-                <a href="./index.php?do=show_story">Story</a>
+                <!-- <a href="./index.php?do=show_story">Story</a> -->
             </div>
             <div class="status_box">
                 <?php include "./include/status.php"; ?>
